@@ -1,0 +1,1326 @@
+#ifndef YOLOV5_GRAPHINFO_H
+#define YOLOV5_GRAPHINFO_H
+// Quantized scales can be used round_norm(val * QSCALE, QNORM) giving the real value in Q8
+// Input_1
+#define YOLOv5_Input_1_OUT_SCALE	0.003921568859368563
+#define YOLOv5_Input_1_OUT_QSCALE	64
+#define YOLOv5_Input_1_OUT_QNORM	14
+#define YOLOv5_Input_1_OUT_ZERO_POINT	0
+#define YOLOv5_Input_1_Q	0
+// S1_arith_constant21
+#define YOLOv5_S1_arith_constant21_OUT_SCALE	0.005028771236538887
+#define YOLOv5_S1_arith_constant21_OUT_QSCALE	82
+#define YOLOv5_S1_arith_constant21_OUT_QNORM	14
+#define YOLOv5_S1_arith_constant21_OUT_ZERO_POINT	128
+#define YOLOv5_S1_arith_constant21_Q	0
+// S2_arith_constant
+#define YOLOv5_S2_arith_constant_OUT_SCALE	1.9720671843970194e-05
+#define YOLOv5_S2_arith_constant_OUT_QSCALE	83
+#define YOLOv5_S2_arith_constant_OUT_QNORM	22
+#define YOLOv5_S2_arith_constant_OUT_ZERO_POINT	0
+#define YOLOv5_S2_arith_constant_Q	0
+// S3_CONV_2D_0_0_fusion
+#define YOLOv5_S3_CONV_2D_0_0_fusion_OUT_SCALE	0.05429495871067047
+#define YOLOv5_S3_CONV_2D_0_0_fusion_OUT_QSCALE	111
+#define YOLOv5_S3_CONV_2D_0_0_fusion_OUT_QNORM	11
+#define YOLOv5_S3_CONV_2D_0_0_fusion_OUT_ZERO_POINT	5
+#define YOLOv5_S3_CONV_2D_0_0_fusion_Q	0
+// S4_tfl_pseudo_qconst38
+#define YOLOv5_S4_tfl_pseudo_qconst38_OUT_SCALE	0.009059442207217216
+#define YOLOv5_S4_tfl_pseudo_qconst38_OUT_QSCALE	74
+#define YOLOv5_S4_tfl_pseudo_qconst38_OUT_QNORM	13
+#define YOLOv5_S4_tfl_pseudo_qconst38_OUT_ZERO_POINT	128
+#define YOLOv5_S4_tfl_pseudo_qconst38_Q	0
+// S5_arith_constant86
+#define YOLOv5_S5_arith_constant86_OUT_SCALE	0.0004918820405825641
+#define YOLOv5_S5_arith_constant86_OUT_QSCALE	64
+#define YOLOv5_S5_arith_constant86_OUT_QNORM	17
+#define YOLOv5_S5_arith_constant86_OUT_ZERO_POINT	0
+#define YOLOv5_S5_arith_constant86_Q	0
+// S6_CONV_2D_0_4_fusion
+#define YOLOv5_S6_CONV_2D_0_4_fusion_OUT_SCALE	0.1125517264008522
+#define YOLOv5_S6_CONV_2D_0_4_fusion_OUT_QSCALE	115
+#define YOLOv5_S6_CONV_2D_0_4_fusion_OUT_QNORM	10
+#define YOLOv5_S6_CONV_2D_0_4_fusion_OUT_ZERO_POINT	2
+#define YOLOv5_S6_CONV_2D_0_4_fusion_Q	0
+// S7_arith_constant22
+#define YOLOv5_S7_arith_constant22_OUT_SCALE	0.003940329421311617
+#define YOLOv5_S7_arith_constant22_OUT_QSCALE	65
+#define YOLOv5_S7_arith_constant22_OUT_QNORM	14
+#define YOLOv5_S7_arith_constant22_OUT_ZERO_POINT	128
+#define YOLOv5_S7_arith_constant22_Q	0
+// S8_arith_constant85
+#define YOLOv5_S8_arith_constant85_OUT_SCALE	0.0004434908789566934
+#define YOLOv5_S8_arith_constant85_OUT_QSCALE	116
+#define YOLOv5_S8_arith_constant85_OUT_QNORM	18
+#define YOLOv5_S8_arith_constant85_OUT_ZERO_POINT	0
+#define YOLOv5_S8_arith_constant85_Q	0
+// S9_CONV_2D_0_7_fusion
+#define YOLOv5_S9_CONV_2D_0_7_fusion_OUT_SCALE	0.030363906174898148
+#define YOLOv5_S9_CONV_2D_0_7_fusion_OUT_QSCALE	124
+#define YOLOv5_S9_CONV_2D_0_7_fusion_OUT_QNORM	12
+#define YOLOv5_S9_CONV_2D_0_7_fusion_OUT_ZERO_POINT	9
+#define YOLOv5_S9_CONV_2D_0_7_fusion_Q	0
+// S10_CONV_2D_0_7_split
+#define YOLOv5_S10_CONV_2D_0_7_split_OUT_SCALE	0.030363906174898148
+#define YOLOv5_S10_CONV_2D_0_7_split_OUT_QSCALE	124
+#define YOLOv5_S10_CONV_2D_0_7_split_OUT_QNORM	12
+#define YOLOv5_S10_CONV_2D_0_7_split_OUT_ZERO_POINT	9
+#define YOLOv5_S10_CONV_2D_0_7_split_Q	0
+#define YOLOv5_S10_CONV_2D_0_7_split_Q	0
+// S11_CONV_2D_0_7_split_copy_qout0
+#define YOLOv5_S11_CONV_2D_0_7_split_copy_qout0_OUT_SCALE	0.03400298029768701
+#define YOLOv5_S11_CONV_2D_0_7_split_copy_qout0_OUT_QSCALE	70
+#define YOLOv5_S11_CONV_2D_0_7_split_copy_qout0_OUT_QNORM	11
+#define YOLOv5_S11_CONV_2D_0_7_split_copy_qout0_OUT_ZERO_POINT	16
+#define YOLOv5_S11_CONV_2D_0_7_split_copy_qout0_Q	0
+// S12_arith_constant23
+#define YOLOv5_S12_arith_constant23_OUT_SCALE	0.013287500478327274
+#define YOLOv5_S12_arith_constant23_OUT_QSCALE	109
+#define YOLOv5_S12_arith_constant23_OUT_QNORM	13
+#define YOLOv5_S12_arith_constant23_OUT_ZERO_POINT	128
+#define YOLOv5_S12_arith_constant23_Q	0
+// S13_arith_constant84
+#define YOLOv5_S13_arith_constant84_OUT_SCALE	0.0004034604178228436
+#define YOLOv5_S13_arith_constant84_OUT_QSCALE	106
+#define YOLOv5_S13_arith_constant84_OUT_QNORM	18
+#define YOLOv5_S13_arith_constant84_OUT_ZERO_POINT	0
+#define YOLOv5_S13_arith_constant84_Q	0
+// S14_CONV_2D_0_10_fusion
+#define YOLOv5_S14_CONV_2D_0_10_fusion_OUT_SCALE	0.01737399771809578
+#define YOLOv5_S14_CONV_2D_0_10_fusion_OUT_QSCALE	71
+#define YOLOv5_S14_CONV_2D_0_10_fusion_OUT_QNORM	12
+#define YOLOv5_S14_CONV_2D_0_10_fusion_OUT_ZERO_POINT	16
+#define YOLOv5_S14_CONV_2D_0_10_fusion_Q	0
+// S15_arith_constant24
+#define YOLOv5_S15_arith_constant24_OUT_SCALE	0.005380557384341955
+#define YOLOv5_S15_arith_constant24_OUT_QSCALE	88
+#define YOLOv5_S15_arith_constant24_OUT_QNORM	14
+#define YOLOv5_S15_arith_constant24_OUT_ZERO_POINT	128
+#define YOLOv5_S15_arith_constant24_Q	0
+// S16_arith_constant83
+#define YOLOv5_S16_arith_constant83_OUT_SCALE	9.348179171764052e-05
+#define YOLOv5_S16_arith_constant83_OUT_QSCALE	98
+#define YOLOv5_S16_arith_constant83_OUT_QNORM	20
+#define YOLOv5_S16_arith_constant83_OUT_ZERO_POINT	0
+#define YOLOv5_S16_arith_constant83_Q	0
+// S17_CONV_2D_0_13
+#define YOLOv5_S17_CONV_2D_0_13_OUT_SCALE	0.0582919679582119
+#define YOLOv5_S17_CONV_2D_0_13_OUT_QSCALE	119
+#define YOLOv5_S17_CONV_2D_0_13_OUT_QNORM	11
+#define YOLOv5_S17_CONV_2D_0_13_OUT_ZERO_POINT	120
+#define YOLOv5_S17_CONV_2D_0_13_Q	0
+// S18_expr_0
+#define YOLOv5_S18_expr_0_OUT_SCALE	0.03400298029768701
+#define YOLOv5_S18_expr_0_OUT_QSCALE	70
+#define YOLOv5_S18_expr_0_OUT_QNORM	11
+#define YOLOv5_S18_expr_0_OUT_ZERO_POINT	16
+#define YOLOv5_S18_expr_0_Q	0
+// S19_CONCAT_0_20
+#define YOLOv5_S19_CONCAT_0_20_OUT_SCALE	0.03400298029768701
+#define YOLOv5_S19_CONCAT_0_20_OUT_QSCALE	70
+#define YOLOv5_S19_CONCAT_0_20_OUT_QNORM	11
+#define YOLOv5_S19_CONCAT_0_20_OUT_ZERO_POINT	16
+#define YOLOv5_S19_CONCAT_0_20_Q	0
+// S20_arith_constant26
+#define YOLOv5_S20_arith_constant26_OUT_SCALE	0.003711098339408636
+#define YOLOv5_S20_arith_constant26_OUT_QSCALE	122
+#define YOLOv5_S20_arith_constant26_OUT_QNORM	15
+#define YOLOv5_S20_arith_constant26_OUT_ZERO_POINT	128
+#define YOLOv5_S20_arith_constant26_Q	0
+// S21_arith_constant81
+#define YOLOv5_S21_arith_constant81_OUT_SCALE	0.00012618840371769082
+#define YOLOv5_S21_arith_constant81_OUT_QSCALE	66
+#define YOLOv5_S21_arith_constant81_OUT_QNORM	19
+#define YOLOv5_S21_arith_constant81_OUT_ZERO_POINT	0
+#define YOLOv5_S21_arith_constant81_Q	0
+// S22_CONV_2D_0_21_fusion
+#define YOLOv5_S22_CONV_2D_0_21_fusion_OUT_SCALE	0.024002913385629654
+#define YOLOv5_S22_CONV_2D_0_21_fusion_OUT_QSCALE	98
+#define YOLOv5_S22_CONV_2D_0_21_fusion_OUT_QNORM	12
+#define YOLOv5_S22_CONV_2D_0_21_fusion_OUT_ZERO_POINT	12
+#define YOLOv5_S22_CONV_2D_0_21_fusion_Q	0
+// S23_tfl_pseudo_qconst37
+#define YOLOv5_S23_tfl_pseudo_qconst37_OUT_SCALE	0.001999491360038519
+#define YOLOv5_S23_tfl_pseudo_qconst37_OUT_QSCALE	66
+#define YOLOv5_S23_tfl_pseudo_qconst37_OUT_QNORM	15
+#define YOLOv5_S23_tfl_pseudo_qconst37_OUT_ZERO_POINT	128
+#define YOLOv5_S23_tfl_pseudo_qconst37_Q	0
+// S24_arith_constant80
+#define YOLOv5_S24_arith_constant80_OUT_SCALE	4.799361793031941e-05
+#define YOLOv5_S24_arith_constant80_OUT_QSCALE	101
+#define YOLOv5_S24_arith_constant80_OUT_QNORM	21
+#define YOLOv5_S24_arith_constant80_OUT_ZERO_POINT	0
+#define YOLOv5_S24_arith_constant80_Q	0
+// S25_CONV_2D_0_25_fusion
+#define YOLOv5_S25_CONV_2D_0_25_fusion_OUT_SCALE	0.01745920069515705
+#define YOLOv5_S25_CONV_2D_0_25_fusion_OUT_QSCALE	72
+#define YOLOv5_S25_CONV_2D_0_25_fusion_OUT_QNORM	12
+#define YOLOv5_S25_CONV_2D_0_25_fusion_OUT_ZERO_POINT	16
+#define YOLOv5_S25_CONV_2D_0_25_fusion_Q	0
+// S26_arith_constant27
+#define YOLOv5_S26_arith_constant27_OUT_SCALE	0.0038342454936355352
+#define YOLOv5_S26_arith_constant27_OUT_QSCALE	126
+#define YOLOv5_S26_arith_constant27_OUT_QNORM	15
+#define YOLOv5_S26_arith_constant27_OUT_ZERO_POINT	128
+#define YOLOv5_S26_arith_constant27_Q	0
+// S27_arith_constant79
+#define YOLOv5_S27_arith_constant79_OUT_SCALE	6.694286158788433e-05
+#define YOLOv5_S27_arith_constant79_OUT_QSCALE	70
+#define YOLOv5_S27_arith_constant79_OUT_QNORM	20
+#define YOLOv5_S27_arith_constant79_OUT_ZERO_POINT	0
+#define YOLOv5_S27_arith_constant79_Q	0
+// S28_CONV_2D_0_28_fusion
+#define YOLOv5_S28_CONV_2D_0_28_fusion_OUT_SCALE	0.016070012003183365
+#define YOLOv5_S28_CONV_2D_0_28_fusion_OUT_QSCALE	66
+#define YOLOv5_S28_CONV_2D_0_28_fusion_OUT_QNORM	12
+#define YOLOv5_S28_CONV_2D_0_28_fusion_OUT_ZERO_POINT	17
+#define YOLOv5_S28_CONV_2D_0_28_fusion_Q	0
+// S29_CONV_2D_0_28_split
+#define YOLOv5_S29_CONV_2D_0_28_split_OUT_SCALE	0.016070012003183365
+#define YOLOv5_S29_CONV_2D_0_28_split_OUT_QSCALE	66
+#define YOLOv5_S29_CONV_2D_0_28_split_OUT_QNORM	12
+#define YOLOv5_S29_CONV_2D_0_28_split_OUT_ZERO_POINT	17
+#define YOLOv5_S29_CONV_2D_0_28_split_Q	0
+#define YOLOv5_S29_CONV_2D_0_28_split_Q	0
+// S30_CONV_2D_0_28_split_copy_qout0
+#define YOLOv5_S30_CONV_2D_0_28_split_copy_qout0_OUT_SCALE	0.020868868921317306
+#define YOLOv5_S30_CONV_2D_0_28_split_copy_qout0_OUT_QSCALE	85
+#define YOLOv5_S30_CONV_2D_0_28_split_copy_qout0_OUT_QNORM	12
+#define YOLOv5_S30_CONV_2D_0_28_split_copy_qout0_OUT_ZERO_POINT	27
+#define YOLOv5_S30_CONV_2D_0_28_split_copy_qout0_Q	0
+// S31_arith_constant28
+#define YOLOv5_S31_arith_constant28_OUT_SCALE	0.008078999817371368
+#define YOLOv5_S31_arith_constant28_OUT_QSCALE	66
+#define YOLOv5_S31_arith_constant28_OUT_QNORM	13
+#define YOLOv5_S31_arith_constant28_OUT_ZERO_POINT	128
+#define YOLOv5_S31_arith_constant28_Q	0
+// S32_arith_constant78
+#define YOLOv5_S32_arith_constant78_OUT_SCALE	0.0001298296240388741
+#define YOLOv5_S32_arith_constant78_OUT_QSCALE	68
+#define YOLOv5_S32_arith_constant78_OUT_QNORM	19
+#define YOLOv5_S32_arith_constant78_OUT_ZERO_POINT	0
+#define YOLOv5_S32_arith_constant78_Q	0
+// S33_CONV_2D_0_31_fusion
+#define YOLOv5_S33_CONV_2D_0_31_fusion_OUT_SCALE	0.01580732874572277
+#define YOLOv5_S33_CONV_2D_0_31_fusion_OUT_QSCALE	65
+#define YOLOv5_S33_CONV_2D_0_31_fusion_OUT_QNORM	12
+#define YOLOv5_S33_CONV_2D_0_31_fusion_OUT_ZERO_POINT	18
+#define YOLOv5_S33_CONV_2D_0_31_fusion_Q	0
+// S34_tfl_pseudo_qconst36
+#define YOLOv5_S34_tfl_pseudo_qconst36_OUT_SCALE	0.003967094700783491
+#define YOLOv5_S34_tfl_pseudo_qconst36_OUT_QSCALE	65
+#define YOLOv5_S34_tfl_pseudo_qconst36_OUT_QNORM	14
+#define YOLOv5_S34_tfl_pseudo_qconst36_OUT_ZERO_POINT	128
+#define YOLOv5_S34_tfl_pseudo_qconst36_Q	0
+// S35_arith_constant77
+#define YOLOv5_S35_arith_constant77_OUT_SCALE	6.270917010069935e-05
+#define YOLOv5_S35_arith_constant77_OUT_QSCALE	66
+#define YOLOv5_S35_arith_constant77_OUT_QNORM	20
+#define YOLOv5_S35_arith_constant77_OUT_ZERO_POINT	0
+#define YOLOv5_S35_arith_constant77_Q	0
+// S36_CONV_2D_0_34
+#define YOLOv5_S36_CONV_2D_0_34_OUT_SCALE	0.03252289071679115
+#define YOLOv5_S36_CONV_2D_0_34_OUT_QSCALE	67
+#define YOLOv5_S36_CONV_2D_0_34_OUT_QNORM	11
+#define YOLOv5_S36_CONV_2D_0_34_OUT_ZERO_POINT	105
+#define YOLOv5_S36_CONV_2D_0_34_Q	0
+// S37_expr_4
+#define YOLOv5_S37_expr_4_OUT_SCALE	0.020868868921317306
+#define YOLOv5_S37_expr_4_OUT_QSCALE	85
+#define YOLOv5_S37_expr_4_OUT_QNORM	12
+#define YOLOv5_S37_expr_4_OUT_ZERO_POINT	27
+#define YOLOv5_S37_expr_4_Q	0
+// S38_CONCAT_0_41
+#define YOLOv5_S38_CONCAT_0_41_OUT_SCALE	0.020868868921317306
+#define YOLOv5_S38_CONCAT_0_41_OUT_QSCALE	85
+#define YOLOv5_S38_CONCAT_0_41_OUT_QNORM	12
+#define YOLOv5_S38_CONCAT_0_41_OUT_ZERO_POINT	27
+#define YOLOv5_S38_CONCAT_0_41_Q	0
+// S39_tfl_pseudo_qconst35
+#define YOLOv5_S39_tfl_pseudo_qconst35_OUT_SCALE	0.002508855890482664
+#define YOLOv5_S39_tfl_pseudo_qconst35_OUT_QSCALE	82
+#define YOLOv5_S39_tfl_pseudo_qconst35_OUT_QNORM	15
+#define YOLOv5_S39_tfl_pseudo_qconst35_OUT_ZERO_POINT	128
+#define YOLOv5_S39_tfl_pseudo_qconst35_Q	0
+// S40_arith_constant75
+#define YOLOv5_S40_arith_constant75_OUT_SCALE	5.2356984720957524e-05
+#define YOLOv5_S40_arith_constant75_OUT_QSCALE	110
+#define YOLOv5_S40_arith_constant75_OUT_QNORM	21
+#define YOLOv5_S40_arith_constant75_OUT_ZERO_POINT	0
+#define YOLOv5_S40_arith_constant75_Q	0
+// S41_CONV_2D_0_42_fusion
+#define YOLOv5_S41_CONV_2D_0_42_fusion_OUT_SCALE	0.014321430586278439
+#define YOLOv5_S41_CONV_2D_0_42_fusion_OUT_QSCALE	117
+#define YOLOv5_S41_CONV_2D_0_42_fusion_OUT_QNORM	13
+#define YOLOv5_S41_CONV_2D_0_42_fusion_OUT_ZERO_POINT	19
+#define YOLOv5_S41_CONV_2D_0_42_fusion_Q	0
+// S42_CONV_2D_0_42_fusion_qout0
+#define YOLOv5_S42_CONV_2D_0_42_fusion_qout0_OUT_SCALE	0.028021520003676414
+#define YOLOv5_S42_CONV_2D_0_42_fusion_qout0_OUT_QSCALE	115
+#define YOLOv5_S42_CONV_2D_0_42_fusion_qout0_OUT_QNORM	12
+#define YOLOv5_S42_CONV_2D_0_42_fusion_qout0_OUT_ZERO_POINT	10
+#define YOLOv5_S42_CONV_2D_0_42_fusion_qout0_Q	0
+// S43_tfl_pseudo_qconst34
+#define YOLOv5_S43_tfl_pseudo_qconst34_OUT_SCALE	0.0024694970343261957
+#define YOLOv5_S43_tfl_pseudo_qconst34_OUT_QSCALE	81
+#define YOLOv5_S43_tfl_pseudo_qconst34_OUT_QNORM	15
+#define YOLOv5_S43_tfl_pseudo_qconst34_OUT_ZERO_POINT	128
+#define YOLOv5_S43_tfl_pseudo_qconst34_Q	0
+// S44_arith_constant74
+#define YOLOv5_S44_arith_constant74_OUT_SCALE	3.5366730360123074e-05
+#define YOLOv5_S44_arith_constant74_OUT_QSCALE	74
+#define YOLOv5_S44_arith_constant74_OUT_QNORM	21
+#define YOLOv5_S44_arith_constant74_OUT_ZERO_POINT	0
+#define YOLOv5_S44_arith_constant74_Q	0
+// S45_CONV_2D_0_46_fusion
+#define YOLOv5_S45_CONV_2D_0_46_fusion_OUT_SCALE	0.014308649115264416
+#define YOLOv5_S45_CONV_2D_0_46_fusion_OUT_QSCALE	117
+#define YOLOv5_S45_CONV_2D_0_46_fusion_OUT_QNORM	13
+#define YOLOv5_S45_CONV_2D_0_46_fusion_OUT_ZERO_POINT	19
+#define YOLOv5_S45_CONV_2D_0_46_fusion_Q	0
+// S46_tfl_pseudo_qconst33
+#define YOLOv5_S46_tfl_pseudo_qconst33_OUT_SCALE	0.0030747498385608196
+#define YOLOv5_S46_tfl_pseudo_qconst33_OUT_QSCALE	101
+#define YOLOv5_S46_tfl_pseudo_qconst33_OUT_QNORM	15
+#define YOLOv5_S46_tfl_pseudo_qconst33_OUT_ZERO_POINT	128
+#define YOLOv5_S46_tfl_pseudo_qconst33_Q	0
+// S47_arith_constant73
+#define YOLOv5_S47_arith_constant73_OUT_SCALE	4.399551655718268e-05
+#define YOLOv5_S47_arith_constant73_OUT_QSCALE	92
+#define YOLOv5_S47_arith_constant73_OUT_QNORM	21
+#define YOLOv5_S47_arith_constant73_OUT_ZERO_POINT	0
+#define YOLOv5_S47_arith_constant73_Q	0
+// S48_CONV_2D_0_49_fusion
+#define YOLOv5_S48_CONV_2D_0_49_fusion_OUT_SCALE	0.018174368888139725
+#define YOLOv5_S48_CONV_2D_0_49_fusion_OUT_QSCALE	74
+#define YOLOv5_S48_CONV_2D_0_49_fusion_OUT_QNORM	12
+#define YOLOv5_S48_CONV_2D_0_49_fusion_OUT_ZERO_POINT	15
+#define YOLOv5_S48_CONV_2D_0_49_fusion_Q	0
+// S49_CONV_2D_0_49_split
+#define YOLOv5_S49_CONV_2D_0_49_split_OUT_SCALE	0.018174368888139725
+#define YOLOv5_S49_CONV_2D_0_49_split_OUT_QSCALE	74
+#define YOLOv5_S49_CONV_2D_0_49_split_OUT_QNORM	12
+#define YOLOv5_S49_CONV_2D_0_49_split_OUT_ZERO_POINT	15
+#define YOLOv5_S49_CONV_2D_0_49_split_Q	0
+#define YOLOv5_S49_CONV_2D_0_49_split_Q	0
+// S50_CONV_2D_0_49_split_copy_qout0
+#define YOLOv5_S50_CONV_2D_0_49_split_copy_qout0_OUT_SCALE	0.01931149630398074
+#define YOLOv5_S50_CONV_2D_0_49_split_copy_qout0_OUT_QSCALE	79
+#define YOLOv5_S50_CONV_2D_0_49_split_copy_qout0_OUT_QNORM	12
+#define YOLOv5_S50_CONV_2D_0_49_split_copy_qout0_OUT_ZERO_POINT	29
+#define YOLOv5_S50_CONV_2D_0_49_split_copy_qout0_Q	0
+// S51_arith_constant30
+#define YOLOv5_S51_arith_constant30_OUT_SCALE	0.006648422218859196
+#define YOLOv5_S51_arith_constant30_OUT_QSCALE	109
+#define YOLOv5_S51_arith_constant30_OUT_QNORM	14
+#define YOLOv5_S51_arith_constant30_OUT_ZERO_POINT	128
+#define YOLOv5_S51_arith_constant30_Q	0
+// S52_arith_constant72
+#define YOLOv5_S52_arith_constant72_OUT_SCALE	0.00012083087792965144
+#define YOLOv5_S52_arith_constant72_OUT_QSCALE	127
+#define YOLOv5_S52_arith_constant72_OUT_QNORM	20
+#define YOLOv5_S52_arith_constant72_OUT_ZERO_POINT	0
+#define YOLOv5_S52_arith_constant72_Q	0
+// S53_CONV_2D_0_52_fusion
+#define YOLOv5_S53_CONV_2D_0_52_fusion_OUT_SCALE	0.013566126115620136
+#define YOLOv5_S53_CONV_2D_0_52_fusion_OUT_QSCALE	111
+#define YOLOv5_S53_CONV_2D_0_52_fusion_OUT_QNORM	13
+#define YOLOv5_S53_CONV_2D_0_52_fusion_OUT_ZERO_POINT	21
+#define YOLOv5_S53_CONV_2D_0_52_fusion_Q	0
+// S54_tfl_pseudo_qconst32
+#define YOLOv5_S54_tfl_pseudo_qconst32_OUT_SCALE	0.002116177463904023
+#define YOLOv5_S54_tfl_pseudo_qconst32_OUT_QSCALE	69
+#define YOLOv5_S54_tfl_pseudo_qconst32_OUT_QNORM	15
+#define YOLOv5_S54_tfl_pseudo_qconst32_OUT_ZERO_POINT	128
+#define YOLOv5_S54_tfl_pseudo_qconst32_Q	0
+// S55_arith_constant71
+#define YOLOv5_S55_arith_constant71_OUT_SCALE	2.8708330358355157e-05
+#define YOLOv5_S55_arith_constant71_OUT_QSCALE	120
+#define YOLOv5_S55_arith_constant71_OUT_QNORM	22
+#define YOLOv5_S55_arith_constant71_OUT_ZERO_POINT	0
+#define YOLOv5_S55_arith_constant71_Q	0
+// S56_CONV_2D_0_55
+#define YOLOv5_S56_CONV_2D_0_55_OUT_SCALE	0.027217961847782135
+#define YOLOv5_S56_CONV_2D_0_55_OUT_QSCALE	111
+#define YOLOv5_S56_CONV_2D_0_55_OUT_QNORM	12
+#define YOLOv5_S56_CONV_2D_0_55_OUT_ZERO_POINT	137
+#define YOLOv5_S56_CONV_2D_0_55_Q	0
+// S57_expr_5
+#define YOLOv5_S57_expr_5_OUT_SCALE	0.01931149630398074
+#define YOLOv5_S57_expr_5_OUT_QSCALE	79
+#define YOLOv5_S57_expr_5_OUT_QNORM	12
+#define YOLOv5_S57_expr_5_OUT_ZERO_POINT	29
+#define YOLOv5_S57_expr_5_Q	0
+// S58_CONCAT_0_62
+#define YOLOv5_S58_CONCAT_0_62_OUT_SCALE	0.01931149630398074
+#define YOLOv5_S58_CONCAT_0_62_OUT_QSCALE	79
+#define YOLOv5_S58_CONCAT_0_62_OUT_QNORM	12
+#define YOLOv5_S58_CONCAT_0_62_OUT_ZERO_POINT	29
+#define YOLOv5_S58_CONCAT_0_62_Q	0
+// S59_tfl_pseudo_qconst30
+#define YOLOv5_S59_tfl_pseudo_qconst30_OUT_SCALE	0.0037899226881563663
+#define YOLOv5_S59_tfl_pseudo_qconst30_OUT_QSCALE	124
+#define YOLOv5_S59_tfl_pseudo_qconst30_OUT_QNORM	15
+#define YOLOv5_S59_tfl_pseudo_qconst30_OUT_ZERO_POINT	128
+#define YOLOv5_S59_tfl_pseudo_qconst30_Q	0
+// S60_arith_constant69
+#define YOLOv5_S60_arith_constant69_OUT_SCALE	7.318907798470442e-05
+#define YOLOv5_S60_arith_constant69_OUT_QSCALE	77
+#define YOLOv5_S60_arith_constant69_OUT_QNORM	20
+#define YOLOv5_S60_arith_constant69_OUT_ZERO_POINT	0
+#define YOLOv5_S60_arith_constant69_Q	0
+// S61_CONV_2D_0_63_fusion
+#define YOLOv5_S61_CONV_2D_0_63_fusion_OUT_SCALE	0.016403190791606903
+#define YOLOv5_S61_CONV_2D_0_63_fusion_OUT_QSCALE	67
+#define YOLOv5_S61_CONV_2D_0_63_fusion_OUT_QNORM	12
+#define YOLOv5_S61_CONV_2D_0_63_fusion_OUT_ZERO_POINT	17
+#define YOLOv5_S61_CONV_2D_0_63_fusion_Q	0
+// S62_CONV_2D_0_63_fusion_qout0
+#define YOLOv5_S62_CONV_2D_0_63_fusion_qout0_OUT_SCALE	0.01977397814831313
+#define YOLOv5_S62_CONV_2D_0_63_fusion_qout0_OUT_QSCALE	81
+#define YOLOv5_S62_CONV_2D_0_63_fusion_qout0_OUT_QNORM	12
+#define YOLOv5_S62_CONV_2D_0_63_fusion_qout0_OUT_ZERO_POINT	14
+#define YOLOv5_S62_CONV_2D_0_63_fusion_qout0_Q	0
+// S63_tfl_pseudo_qconst29
+#define YOLOv5_S63_tfl_pseudo_qconst29_OUT_SCALE	0.0009431193466298282
+#define YOLOv5_S63_tfl_pseudo_qconst29_OUT_QSCALE	124
+#define YOLOv5_S63_tfl_pseudo_qconst29_OUT_QNORM	17
+#define YOLOv5_S63_tfl_pseudo_qconst29_OUT_ZERO_POINT	128
+#define YOLOv5_S63_tfl_pseudo_qconst29_Q	0
+// S64_arith_constant68
+#define YOLOv5_S64_arith_constant68_OUT_SCALE	1.5470166582024717e-05
+#define YOLOv5_S64_arith_constant68_OUT_QSCALE	65
+#define YOLOv5_S64_arith_constant68_OUT_QNORM	22
+#define YOLOv5_S64_arith_constant68_OUT_ZERO_POINT	0
+#define YOLOv5_S64_arith_constant68_Q	0
+// S65_CONV_2D_0_67_fusion
+#define YOLOv5_S65_CONV_2D_0_67_fusion_OUT_SCALE	0.015114028006792068
+#define YOLOv5_S65_CONV_2D_0_67_fusion_OUT_QSCALE	124
+#define YOLOv5_S65_CONV_2D_0_67_fusion_OUT_QNORM	13
+#define YOLOv5_S65_CONV_2D_0_67_fusion_OUT_ZERO_POINT	18
+#define YOLOv5_S65_CONV_2D_0_67_fusion_Q	0
+// S66_tfl_pseudo_qconst28
+#define YOLOv5_S66_tfl_pseudo_qconst28_OUT_SCALE	0.0027858042158186436
+#define YOLOv5_S66_tfl_pseudo_qconst28_OUT_QSCALE	91
+#define YOLOv5_S66_tfl_pseudo_qconst28_OUT_QNORM	15
+#define YOLOv5_S66_tfl_pseudo_qconst28_OUT_ZERO_POINT	128
+#define YOLOv5_S66_tfl_pseudo_qconst28_Q	0
+// S67_arith_constant67
+#define YOLOv5_S67_arith_constant67_OUT_SCALE	4.2104722939322395e-05
+#define YOLOv5_S67_arith_constant67_OUT_QSCALE	88
+#define YOLOv5_S67_arith_constant67_OUT_QNORM	21
+#define YOLOv5_S67_arith_constant67_OUT_ZERO_POINT	0
+#define YOLOv5_S67_arith_constant67_Q	0
+// S68_CONV_2D_0_70_fusion
+#define YOLOv5_S68_CONV_2D_0_70_fusion_OUT_SCALE	0.018129386007785797
+#define YOLOv5_S68_CONV_2D_0_70_fusion_OUT_QSCALE	74
+#define YOLOv5_S68_CONV_2D_0_70_fusion_OUT_QNORM	12
+#define YOLOv5_S68_CONV_2D_0_70_fusion_OUT_ZERO_POINT	15
+#define YOLOv5_S68_CONV_2D_0_70_fusion_Q	0
+// S69_CONV_2D_0_70_split
+#define YOLOv5_S69_CONV_2D_0_70_split_OUT_SCALE	0.018129386007785797
+#define YOLOv5_S69_CONV_2D_0_70_split_OUT_QSCALE	74
+#define YOLOv5_S69_CONV_2D_0_70_split_OUT_QNORM	12
+#define YOLOv5_S69_CONV_2D_0_70_split_OUT_ZERO_POINT	15
+#define YOLOv5_S69_CONV_2D_0_70_split_Q	0
+#define YOLOv5_S69_CONV_2D_0_70_split_Q	0
+// S70_CONV_2D_0_70_split_copy_qout0
+#define YOLOv5_S70_CONV_2D_0_70_split_copy_qout0_OUT_SCALE	0.030199665181777056
+#define YOLOv5_S70_CONV_2D_0_70_split_copy_qout0_OUT_QSCALE	124
+#define YOLOv5_S70_CONV_2D_0_70_split_copy_qout0_OUT_QNORM	12
+#define YOLOv5_S70_CONV_2D_0_70_split_copy_qout0_OUT_ZERO_POINT	18
+#define YOLOv5_S70_CONV_2D_0_70_split_copy_qout0_Q	0
+// S71_tfl_pseudo_qconst27
+#define YOLOv5_S71_tfl_pseudo_qconst27_OUT_SCALE	0.004667938221246004
+#define YOLOv5_S71_tfl_pseudo_qconst27_OUT_QSCALE	76
+#define YOLOv5_S71_tfl_pseudo_qconst27_OUT_QNORM	14
+#define YOLOv5_S71_tfl_pseudo_qconst27_OUT_ZERO_POINT	128
+#define YOLOv5_S71_tfl_pseudo_qconst27_Q	0
+// S72_arith_constant66
+#define YOLOv5_S72_arith_constant66_OUT_SCALE	8.462685387346583e-05
+#define YOLOv5_S72_arith_constant66_OUT_QSCALE	89
+#define YOLOv5_S72_arith_constant66_OUT_QNORM	20
+#define YOLOv5_S72_arith_constant66_OUT_ZERO_POINT	0
+#define YOLOv5_S72_arith_constant66_Q	0
+// S73_CONV_2D_0_73_fusion
+#define YOLOv5_S73_CONV_2D_0_73_fusion_OUT_SCALE	0.018849603831768036
+#define YOLOv5_S73_CONV_2D_0_73_fusion_OUT_QSCALE	77
+#define YOLOv5_S73_CONV_2D_0_73_fusion_OUT_QNORM	12
+#define YOLOv5_S73_CONV_2D_0_73_fusion_OUT_ZERO_POINT	15
+#define YOLOv5_S73_CONV_2D_0_73_fusion_Q	0
+// S74_tfl_pseudo_qconst26
+#define YOLOv5_S74_tfl_pseudo_qconst26_OUT_SCALE	0.001336409361101687
+#define YOLOv5_S74_tfl_pseudo_qconst26_OUT_QSCALE	88
+#define YOLOv5_S74_tfl_pseudo_qconst26_OUT_QNORM	16
+#define YOLOv5_S74_tfl_pseudo_qconst26_OUT_ZERO_POINT	128
+#define YOLOv5_S74_tfl_pseudo_qconst26_Q	0
+// S75_arith_constant65
+#define YOLOv5_S75_arith_constant65_OUT_SCALE	2.519078701383303e-05
+#define YOLOv5_S75_arith_constant65_OUT_QSCALE	106
+#define YOLOv5_S75_arith_constant65_OUT_QNORM	22
+#define YOLOv5_S75_arith_constant65_OUT_ZERO_POINT	0
+#define YOLOv5_S75_arith_constant65_Q	0
+// S76_CONV_2D_0_76
+#define YOLOv5_S76_CONV_2D_0_76_OUT_SCALE	0.037427641451358795
+#define YOLOv5_S76_CONV_2D_0_76_OUT_QSCALE	77
+#define YOLOv5_S76_CONV_2D_0_76_OUT_QNORM	11
+#define YOLOv5_S76_CONV_2D_0_76_OUT_ZERO_POINT	118
+#define YOLOv5_S76_CONV_2D_0_76_Q	0
+// S77_expr_6
+#define YOLOv5_S77_expr_6_OUT_SCALE	0.030199665181777056
+#define YOLOv5_S77_expr_6_OUT_QSCALE	124
+#define YOLOv5_S77_expr_6_OUT_QNORM	12
+#define YOLOv5_S77_expr_6_OUT_ZERO_POINT	18
+#define YOLOv5_S77_expr_6_Q	0
+// S78_CONCAT_0_83
+#define YOLOv5_S78_CONCAT_0_83_OUT_SCALE	0.030199665181777056
+#define YOLOv5_S78_CONCAT_0_83_OUT_QSCALE	124
+#define YOLOv5_S78_CONCAT_0_83_OUT_QNORM	12
+#define YOLOv5_S78_CONCAT_0_83_OUT_ZERO_POINT	18
+#define YOLOv5_S78_CONCAT_0_83_Q	0
+// S79_tfl_pseudo_qconst24
+#define YOLOv5_S79_tfl_pseudo_qconst24_OUT_SCALE	0.002111168345436454
+#define YOLOv5_S79_tfl_pseudo_qconst24_OUT_QSCALE	69
+#define YOLOv5_S79_tfl_pseudo_qconst24_OUT_QNORM	15
+#define YOLOv5_S79_tfl_pseudo_qconst24_OUT_ZERO_POINT	128
+#define YOLOv5_S79_tfl_pseudo_qconst24_Q	0
+// S80_arith_constant63
+#define YOLOv5_S80_arith_constant63_OUT_SCALE	6.375657717454715e-05
+#define YOLOv5_S80_arith_constant63_OUT_QSCALE	67
+#define YOLOv5_S80_arith_constant63_OUT_QNORM	20
+#define YOLOv5_S80_arith_constant63_OUT_ZERO_POINT	0
+#define YOLOv5_S80_arith_constant63_Q	0
+// S81_CONV_2D_0_84_fusion
+#define YOLOv5_S81_CONV_2D_0_84_fusion_OUT_SCALE	0.01774512231349945
+#define YOLOv5_S81_CONV_2D_0_84_fusion_OUT_QSCALE	73
+#define YOLOv5_S81_CONV_2D_0_84_fusion_OUT_QNORM	12
+#define YOLOv5_S81_CONV_2D_0_84_fusion_OUT_ZERO_POINT	16
+#define YOLOv5_S81_CONV_2D_0_84_fusion_Q	0
+// S82_tfl_pseudo_qconst23
+#define YOLOv5_S82_tfl_pseudo_qconst23_OUT_SCALE	0.002276406390592456
+#define YOLOv5_S82_tfl_pseudo_qconst23_OUT_QSCALE	75
+#define YOLOv5_S82_tfl_pseudo_qconst23_OUT_QNORM	15
+#define YOLOv5_S82_tfl_pseudo_qconst23_OUT_ZERO_POINT	128
+#define YOLOv5_S82_tfl_pseudo_qconst23_Q	0
+// S83_arith_constant62
+#define YOLOv5_S83_arith_constant62_OUT_SCALE	4.0395109836294935e-05
+#define YOLOv5_S83_arith_constant62_OUT_QSCALE	85
+#define YOLOv5_S83_arith_constant62_OUT_QNORM	21
+#define YOLOv5_S83_arith_constant62_OUT_ZERO_POINT	0
+#define YOLOv5_S83_arith_constant62_Q	0
+// S84_CONV_2D_0_87_fusion
+#define YOLOv5_S84_CONV_2D_0_87_fusion_OUT_SCALE	0.015607242472469807
+#define YOLOv5_S84_CONV_2D_0_87_fusion_OUT_QSCALE	64
+#define YOLOv5_S84_CONV_2D_0_87_fusion_OUT_QNORM	14
+#define YOLOv5_S84_CONV_2D_0_87_fusion_OUT_ZERO_POINT	18
+#define YOLOv5_S84_CONV_2D_0_87_fusion_Q	0
+// S85_CONV_2D_0_87_fusion_qout0
+#define YOLOv5_S85_CONV_2D_0_87_fusion_qout0_OUT_SCALE	0.014515223912894726
+#define YOLOv5_S85_CONV_2D_0_87_fusion_qout0_OUT_QSCALE	119
+#define YOLOv5_S85_CONV_2D_0_87_fusion_qout0_OUT_QNORM	13
+#define YOLOv5_S85_CONV_2D_0_87_fusion_qout0_OUT_ZERO_POINT	0
+#define YOLOv5_S85_CONV_2D_0_87_fusion_qout0_Q	0
+// S86_MAX_POOL_2D_0_90
+#define YOLOv5_S86_MAX_POOL_2D_0_90_OUT_SCALE	0.014515223912894726
+#define YOLOv5_S86_MAX_POOL_2D_0_90_OUT_QSCALE	119
+#define YOLOv5_S86_MAX_POOL_2D_0_90_OUT_QNORM	13
+#define YOLOv5_S86_MAX_POOL_2D_0_90_OUT_ZERO_POINT	0
+#define YOLOv5_S86_MAX_POOL_2D_0_90_Q	0
+// S87_MAX_POOL_2D_0_91
+#define YOLOv5_S87_MAX_POOL_2D_0_91_OUT_SCALE	0.014515223912894726
+#define YOLOv5_S87_MAX_POOL_2D_0_91_OUT_QSCALE	119
+#define YOLOv5_S87_MAX_POOL_2D_0_91_OUT_QNORM	13
+#define YOLOv5_S87_MAX_POOL_2D_0_91_OUT_ZERO_POINT	0
+#define YOLOv5_S87_MAX_POOL_2D_0_91_Q	0
+// S88_MAX_POOL_2D_0_92
+#define YOLOv5_S88_MAX_POOL_2D_0_92_OUT_SCALE	0.014515223912894726
+#define YOLOv5_S88_MAX_POOL_2D_0_92_OUT_QSCALE	119
+#define YOLOv5_S88_MAX_POOL_2D_0_92_OUT_QNORM	13
+#define YOLOv5_S88_MAX_POOL_2D_0_92_OUT_ZERO_POINT	0
+#define YOLOv5_S88_MAX_POOL_2D_0_92_Q	0
+// S89_MAX_POOL_2D_0_92_qout0
+#define YOLOv5_S89_MAX_POOL_2D_0_92_qout0_OUT_SCALE	0.01561691161683377
+#define YOLOv5_S89_MAX_POOL_2D_0_92_qout0_OUT_QSCALE	64
+#define YOLOv5_S89_MAX_POOL_2D_0_92_qout0_OUT_QNORM	14
+#define YOLOv5_S89_MAX_POOL_2D_0_92_qout0_OUT_ZERO_POINT	18
+#define YOLOv5_S89_MAX_POOL_2D_0_92_qout0_Q	0
+// S90_MAX_POOL_2D_0_91_qout0
+#define YOLOv5_S90_MAX_POOL_2D_0_91_qout0_OUT_SCALE	0.01561691161683377
+#define YOLOv5_S90_MAX_POOL_2D_0_91_qout0_OUT_QSCALE	64
+#define YOLOv5_S90_MAX_POOL_2D_0_91_qout0_OUT_QNORM	14
+#define YOLOv5_S90_MAX_POOL_2D_0_91_qout0_OUT_ZERO_POINT	18
+#define YOLOv5_S90_MAX_POOL_2D_0_91_qout0_Q	0
+// S91_MAX_POOL_2D_0_90_qout0
+#define YOLOv5_S91_MAX_POOL_2D_0_90_qout0_OUT_SCALE	0.01561691161683377
+#define YOLOv5_S91_MAX_POOL_2D_0_90_qout0_OUT_QSCALE	64
+#define YOLOv5_S91_MAX_POOL_2D_0_90_qout0_OUT_QNORM	14
+#define YOLOv5_S91_MAX_POOL_2D_0_90_qout0_OUT_ZERO_POINT	18
+#define YOLOv5_S91_MAX_POOL_2D_0_90_qout0_Q	0
+// S92_CONV_2D_0_87_fusion_qout0_0
+#define YOLOv5_S92_CONV_2D_0_87_fusion_qout0_0_OUT_SCALE	0.01561691161683377
+#define YOLOv5_S92_CONV_2D_0_87_fusion_qout0_0_OUT_QSCALE	64
+#define YOLOv5_S92_CONV_2D_0_87_fusion_qout0_0_OUT_QNORM	14
+#define YOLOv5_S92_CONV_2D_0_87_fusion_qout0_0_OUT_ZERO_POINT	18
+#define YOLOv5_S92_CONV_2D_0_87_fusion_qout0_0_Q	0
+// S93_CONCAT_0_93
+#define YOLOv5_S93_CONCAT_0_93_OUT_SCALE	0.01561691161683377
+#define YOLOv5_S93_CONCAT_0_93_OUT_QSCALE	64
+#define YOLOv5_S93_CONCAT_0_93_OUT_QNORM	14
+#define YOLOv5_S93_CONCAT_0_93_OUT_ZERO_POINT	18
+#define YOLOv5_S93_CONCAT_0_93_Q	0
+// S94_tfl_pseudo_qconst22
+#define YOLOv5_S94_tfl_pseudo_qconst22_OUT_SCALE	0.002143001649528742
+#define YOLOv5_S94_tfl_pseudo_qconst22_OUT_QSCALE	70
+#define YOLOv5_S94_tfl_pseudo_qconst22_OUT_QNORM	15
+#define YOLOv5_S94_tfl_pseudo_qconst22_OUT_ZERO_POINT	128
+#define YOLOv5_S94_tfl_pseudo_qconst22_Q	0
+// S95_arith_constant61
+#define YOLOv5_S95_arith_constant61_OUT_SCALE	3.346706735541934e-05
+#define YOLOv5_S95_arith_constant61_OUT_QSCALE	70
+#define YOLOv5_S95_arith_constant61_OUT_QNORM	21
+#define YOLOv5_S95_arith_constant61_OUT_ZERO_POINT	0
+#define YOLOv5_S95_arith_constant61_Q	0
+// S96_CONV_2D_0_94_fusion
+#define YOLOv5_S96_CONV_2D_0_94_fusion_OUT_SCALE	0.017759431153535843
+#define YOLOv5_S96_CONV_2D_0_94_fusion_OUT_QSCALE	73
+#define YOLOv5_S96_CONV_2D_0_94_fusion_OUT_QNORM	12
+#define YOLOv5_S96_CONV_2D_0_94_fusion_OUT_ZERO_POINT	16
+#define YOLOv5_S96_CONV_2D_0_94_fusion_Q	0
+// S97_tfl_pseudo_qconst21
+#define YOLOv5_S97_tfl_pseudo_qconst21_OUT_SCALE	0.004542771261185408
+#define YOLOv5_S97_tfl_pseudo_qconst21_OUT_QSCALE	74
+#define YOLOv5_S97_tfl_pseudo_qconst21_OUT_QNORM	14
+#define YOLOv5_S97_tfl_pseudo_qconst21_OUT_ZERO_POINT	128
+#define YOLOv5_S97_tfl_pseudo_qconst21_Q	0
+// S98_arith_constant60
+#define YOLOv5_S98_arith_constant60_OUT_SCALE	8.067703345928344e-05
+#define YOLOv5_S98_arith_constant60_OUT_QSCALE	85
+#define YOLOv5_S98_arith_constant60_OUT_QNORM	20
+#define YOLOv5_S98_arith_constant60_OUT_ZERO_POINT	0
+#define YOLOv5_S98_arith_constant60_Q	0
+// S99_CONV_2D_0_97_fusion
+#define YOLOv5_S99_CONV_2D_0_97_fusion_OUT_SCALE	0.01976560242474079
+#define YOLOv5_S99_CONV_2D_0_97_fusion_OUT_QSCALE	81
+#define YOLOv5_S99_CONV_2D_0_97_fusion_OUT_QNORM	12
+#define YOLOv5_S99_CONV_2D_0_97_fusion_OUT_ZERO_POINT	14
+#define YOLOv5_S99_CONV_2D_0_97_fusion_Q	0
+// S100_RESIZE_NN_0_100
+#define YOLOv5_S100_RESIZE_NN_0_100_OUT_SCALE	0.01976560242474079
+#define YOLOv5_S100_RESIZE_NN_0_100_OUT_QSCALE	81
+#define YOLOv5_S100_RESIZE_NN_0_100_OUT_QNORM	12
+#define YOLOv5_S100_RESIZE_NN_0_100_OUT_ZERO_POINT	14
+#define YOLOv5_S100_RESIZE_NN_0_100_Q	0
+// S101_RESIZE_NN_0_100_qout0
+#define YOLOv5_S101_RESIZE_NN_0_100_qout0_OUT_SCALE	0.01977397814831313
+#define YOLOv5_S101_RESIZE_NN_0_100_qout0_OUT_QSCALE	81
+#define YOLOv5_S101_RESIZE_NN_0_100_qout0_OUT_QNORM	12
+#define YOLOv5_S101_RESIZE_NN_0_100_qout0_OUT_ZERO_POINT	14
+#define YOLOv5_S101_RESIZE_NN_0_100_qout0_Q	0
+// S102_CONCAT_0_101
+#define YOLOv5_S102_CONCAT_0_101_OUT_SCALE	0.01977397814831313
+#define YOLOv5_S102_CONCAT_0_101_OUT_QSCALE	81
+#define YOLOv5_S102_CONCAT_0_101_OUT_QNORM	12
+#define YOLOv5_S102_CONCAT_0_101_OUT_ZERO_POINT	14
+#define YOLOv5_S102_CONCAT_0_101_Q	0
+// S103_CONV_2D_0_97_fusion_qout0
+#define YOLOv5_S103_CONV_2D_0_97_fusion_qout0_OUT_SCALE	0.02980038538282993
+#define YOLOv5_S103_CONV_2D_0_97_fusion_qout0_OUT_QSCALE	122
+#define YOLOv5_S103_CONV_2D_0_97_fusion_qout0_OUT_QNORM	12
+#define YOLOv5_S103_CONV_2D_0_97_fusion_qout0_OUT_ZERO_POINT	9
+#define YOLOv5_S103_CONV_2D_0_97_fusion_qout0_Q	0
+// S104_tfl_pseudo_qconst20
+#define YOLOv5_S104_tfl_pseudo_qconst20_OUT_SCALE	0.0023840046487748623
+#define YOLOv5_S104_tfl_pseudo_qconst20_OUT_QSCALE	78
+#define YOLOv5_S104_tfl_pseudo_qconst20_OUT_QNORM	15
+#define YOLOv5_S104_tfl_pseudo_qconst20_OUT_ZERO_POINT	128
+#define YOLOv5_S104_tfl_pseudo_qconst20_Q	0
+// S105_arith_constant59
+#define YOLOv5_S105_arith_constant59_OUT_SCALE	4.7141255830351046e-05
+#define YOLOv5_S105_arith_constant59_OUT_QSCALE	99
+#define YOLOv5_S105_arith_constant59_OUT_QNORM	21
+#define YOLOv5_S105_arith_constant59_OUT_ZERO_POINT	0
+#define YOLOv5_S105_arith_constant59_Q	0
+// S106_CONV_2D_0_102_fusion
+#define YOLOv5_S106_CONV_2D_0_102_fusion_OUT_SCALE	0.018601862713694572
+#define YOLOv5_S106_CONV_2D_0_102_fusion_OUT_QSCALE	76
+#define YOLOv5_S106_CONV_2D_0_102_fusion_OUT_QNORM	12
+#define YOLOv5_S106_CONV_2D_0_102_fusion_OUT_ZERO_POINT	15
+#define YOLOv5_S106_CONV_2D_0_102_fusion_Q	0
+// S107_CONV_2D_0_102_split
+#define YOLOv5_S107_CONV_2D_0_102_split_OUT_SCALE	0.018601862713694572
+#define YOLOv5_S107_CONV_2D_0_102_split_OUT_QSCALE	76
+#define YOLOv5_S107_CONV_2D_0_102_split_OUT_QNORM	12
+#define YOLOv5_S107_CONV_2D_0_102_split_OUT_ZERO_POINT	15
+#define YOLOv5_S107_CONV_2D_0_102_split_Q	0
+#define YOLOv5_S107_CONV_2D_0_102_split_Q	0
+// S108_CONV_2D_0_102_split_copy_qout0
+#define YOLOv5_S108_CONV_2D_0_102_split_copy_qout0_OUT_SCALE	0.02470998989746851
+#define YOLOv5_S108_CONV_2D_0_102_split_copy_qout0_OUT_QSCALE	101
+#define YOLOv5_S108_CONV_2D_0_102_split_copy_qout0_OUT_QNORM	12
+#define YOLOv5_S108_CONV_2D_0_102_split_copy_qout0_OUT_ZERO_POINT	11
+#define YOLOv5_S108_CONV_2D_0_102_split_copy_qout0_Q	0
+// S109_arith_constant31
+#define YOLOv5_S109_arith_constant31_OUT_SCALE	0.005620852578431368
+#define YOLOv5_S109_arith_constant31_OUT_QSCALE	92
+#define YOLOv5_S109_arith_constant31_OUT_QNORM	14
+#define YOLOv5_S109_arith_constant31_OUT_ZERO_POINT	128
+#define YOLOv5_S109_arith_constant31_Q	0
+// S110_arith_constant58
+#define YOLOv5_S110_arith_constant58_OUT_SCALE	0.00010455832799789646
+#define YOLOv5_S110_arith_constant58_OUT_QSCALE	110
+#define YOLOv5_S110_arith_constant58_OUT_QNORM	20
+#define YOLOv5_S110_arith_constant58_OUT_ZERO_POINT	0
+#define YOLOv5_S110_arith_constant58_Q	0
+// S111_CONV_2D_0_105_fusion
+#define YOLOv5_S111_CONV_2D_0_105_fusion_OUT_SCALE	0.02373478375375271
+#define YOLOv5_S111_CONV_2D_0_105_fusion_OUT_QSCALE	97
+#define YOLOv5_S111_CONV_2D_0_105_fusion_OUT_QNORM	12
+#define YOLOv5_S111_CONV_2D_0_105_fusion_OUT_ZERO_POINT	12
+#define YOLOv5_S111_CONV_2D_0_105_fusion_Q	0
+// S112_tfl_pseudo_qconst19
+#define YOLOv5_S112_tfl_pseudo_qconst19_OUT_SCALE	0.0019424394704401493
+#define YOLOv5_S112_tfl_pseudo_qconst19_OUT_QSCALE	127
+#define YOLOv5_S112_tfl_pseudo_qconst19_OUT_QNORM	16
+#define YOLOv5_S112_tfl_pseudo_qconst19_OUT_ZERO_POINT	128
+#define YOLOv5_S112_tfl_pseudo_qconst19_Q	0
+// S113_arith_constant57
+#define YOLOv5_S113_arith_constant57_OUT_SCALE	4.610338078565087e-05
+#define YOLOv5_S113_arith_constant57_OUT_QSCALE	97
+#define YOLOv5_S113_arith_constant57_OUT_QNORM	21
+#define YOLOv5_S113_arith_constant57_OUT_ZERO_POINT	0
+#define YOLOv5_S113_arith_constant57_Q	0
+// S114_CONV_2D_0_108_fusion
+#define YOLOv5_S114_CONV_2D_0_108_fusion_OUT_SCALE	0.02470998989746851
+#define YOLOv5_S114_CONV_2D_0_108_fusion_OUT_QSCALE	101
+#define YOLOv5_S114_CONV_2D_0_108_fusion_OUT_QNORM	12
+#define YOLOv5_S114_CONV_2D_0_108_fusion_OUT_ZERO_POINT	11
+#define YOLOv5_S114_CONV_2D_0_108_fusion_Q	0
+// S115_CONCAT_0_114
+#define YOLOv5_S115_CONCAT_0_114_OUT_SCALE	0.02470998989746851
+#define YOLOv5_S115_CONCAT_0_114_OUT_QSCALE	101
+#define YOLOv5_S115_CONCAT_0_114_OUT_QNORM	12
+#define YOLOv5_S115_CONCAT_0_114_OUT_ZERO_POINT	11
+#define YOLOv5_S115_CONCAT_0_114_Q	0
+// S116_tfl_pseudo_qconst17
+#define YOLOv5_S116_tfl_pseudo_qconst17_OUT_SCALE	0.003871581982821226
+#define YOLOv5_S116_tfl_pseudo_qconst17_OUT_QSCALE	127
+#define YOLOv5_S116_tfl_pseudo_qconst17_OUT_QNORM	15
+#define YOLOv5_S116_tfl_pseudo_qconst17_OUT_ZERO_POINT	128
+#define YOLOv5_S116_tfl_pseudo_qconst17_Q	0
+// S117_arith_constant55
+#define YOLOv5_S117_arith_constant55_OUT_SCALE	9.56667516827336e-05
+#define YOLOv5_S117_arith_constant55_OUT_QSCALE	100
+#define YOLOv5_S117_arith_constant55_OUT_QNORM	20
+#define YOLOv5_S117_arith_constant55_OUT_ZERO_POINT	0
+#define YOLOv5_S117_arith_constant55_Q	0
+// S118_CONV_2D_0_115_fusion
+#define YOLOv5_S118_CONV_2D_0_115_fusion_OUT_SCALE	0.02235586568713188
+#define YOLOv5_S118_CONV_2D_0_115_fusion_OUT_QSCALE	92
+#define YOLOv5_S118_CONV_2D_0_115_fusion_OUT_QNORM	12
+#define YOLOv5_S118_CONV_2D_0_115_fusion_OUT_ZERO_POINT	12
+#define YOLOv5_S118_CONV_2D_0_115_fusion_Q	0
+// S119_tfl_pseudo_qconst16
+#define YOLOv5_S119_tfl_pseudo_qconst16_OUT_SCALE	0.0037047499790787697
+#define YOLOv5_S119_tfl_pseudo_qconst16_OUT_QSCALE	121
+#define YOLOv5_S119_tfl_pseudo_qconst16_OUT_QNORM	15
+#define YOLOv5_S119_tfl_pseudo_qconst16_OUT_ZERO_POINT	128
+#define YOLOv5_S119_tfl_pseudo_qconst16_Q	0
+// S120_arith_constant54
+#define YOLOv5_S120_arith_constant54_OUT_SCALE	8.282289293668962e-05
+#define YOLOv5_S120_arith_constant54_OUT_QSCALE	87
+#define YOLOv5_S120_arith_constant54_OUT_QNORM	20
+#define YOLOv5_S120_arith_constant54_OUT_ZERO_POINT	0
+#define YOLOv5_S120_arith_constant54_Q	0
+// S121_CONV_2D_0_118_fusion
+#define YOLOv5_S121_CONV_2D_0_118_fusion_OUT_SCALE	0.028021520003676414
+#define YOLOv5_S121_CONV_2D_0_118_fusion_OUT_QSCALE	115
+#define YOLOv5_S121_CONV_2D_0_118_fusion_OUT_QNORM	12
+#define YOLOv5_S121_CONV_2D_0_118_fusion_OUT_ZERO_POINT	10
+#define YOLOv5_S121_CONV_2D_0_118_fusion_Q	0
+// S122_RESIZE_NN_0_121
+#define YOLOv5_S122_RESIZE_NN_0_121_OUT_SCALE	0.028021520003676414
+#define YOLOv5_S122_RESIZE_NN_0_121_OUT_QSCALE	115
+#define YOLOv5_S122_RESIZE_NN_0_121_OUT_QNORM	12
+#define YOLOv5_S122_RESIZE_NN_0_121_OUT_ZERO_POINT	10
+#define YOLOv5_S122_RESIZE_NN_0_121_Q	0
+// S123_CONCAT_0_122
+#define YOLOv5_S123_CONCAT_0_122_OUT_SCALE	0.028021520003676414
+#define YOLOv5_S123_CONCAT_0_122_OUT_QSCALE	115
+#define YOLOv5_S123_CONCAT_0_122_OUT_QNORM	12
+#define YOLOv5_S123_CONCAT_0_122_OUT_ZERO_POINT	10
+#define YOLOv5_S123_CONCAT_0_122_Q	0
+// S124_tfl_pseudo_qconst15
+#define YOLOv5_S124_tfl_pseudo_qconst15_OUT_SCALE	0.0029312430415302515
+#define YOLOv5_S124_tfl_pseudo_qconst15_OUT_QSCALE	96
+#define YOLOv5_S124_tfl_pseudo_qconst15_OUT_QNORM	15
+#define YOLOv5_S124_tfl_pseudo_qconst15_OUT_ZERO_POINT	128
+#define YOLOv5_S124_tfl_pseudo_qconst15_Q	0
+// S125_arith_constant53
+#define YOLOv5_S125_arith_constant53_OUT_SCALE	8.213788552387724e-05
+#define YOLOv5_S125_arith_constant53_OUT_QSCALE	86
+#define YOLOv5_S125_arith_constant53_OUT_QNORM	20
+#define YOLOv5_S125_arith_constant53_OUT_ZERO_POINT	0
+#define YOLOv5_S125_arith_constant53_Q	0
+// S126_CONV_2D_0_123_fusion
+#define YOLOv5_S126_CONV_2D_0_123_fusion_OUT_SCALE	0.026819510385394096
+#define YOLOv5_S126_CONV_2D_0_123_fusion_OUT_QSCALE	110
+#define YOLOv5_S126_CONV_2D_0_123_fusion_OUT_QNORM	12
+#define YOLOv5_S126_CONV_2D_0_123_fusion_OUT_ZERO_POINT	10
+#define YOLOv5_S126_CONV_2D_0_123_fusion_Q	0
+// S127_CONV_2D_0_123_split
+#define YOLOv5_S127_CONV_2D_0_123_split_OUT_SCALE	0.026819510385394096
+#define YOLOv5_S127_CONV_2D_0_123_split_OUT_QSCALE	110
+#define YOLOv5_S127_CONV_2D_0_123_split_OUT_QNORM	12
+#define YOLOv5_S127_CONV_2D_0_123_split_OUT_ZERO_POINT	10
+#define YOLOv5_S127_CONV_2D_0_123_split_Q	0
+#define YOLOv5_S127_CONV_2D_0_123_split_Q	0
+// S128_CONV_2D_0_123_split_copy_qout0
+#define YOLOv5_S128_CONV_2D_0_123_split_copy_qout0_OUT_SCALE	0.026830875055462708
+#define YOLOv5_S128_CONV_2D_0_123_split_copy_qout0_OUT_QSCALE	110
+#define YOLOv5_S128_CONV_2D_0_123_split_copy_qout0_OUT_QNORM	12
+#define YOLOv5_S128_CONV_2D_0_123_split_copy_qout0_OUT_ZERO_POINT	10
+#define YOLOv5_S128_CONV_2D_0_123_split_copy_qout0_Q	0
+// S129_arith_constant32
+#define YOLOv5_S129_arith_constant32_OUT_SCALE	0.011604596860706806
+#define YOLOv5_S129_arith_constant32_OUT_QSCALE	95
+#define YOLOv5_S129_arith_constant32_OUT_QNORM	13
+#define YOLOv5_S129_arith_constant32_OUT_ZERO_POINT	128
+#define YOLOv5_S129_arith_constant32_Q	0
+// S130_arith_constant52
+#define YOLOv5_S130_arith_constant52_OUT_SCALE	0.0003112296060240379
+#define YOLOv5_S130_arith_constant52_OUT_QSCALE	82
+#define YOLOv5_S130_arith_constant52_OUT_QNORM	18
+#define YOLOv5_S130_arith_constant52_OUT_ZERO_POINT	0
+#define YOLOv5_S130_arith_constant52_Q	0
+// S131_CONV_2D_0_126_fusion
+#define YOLOv5_S131_CONV_2D_0_126_fusion_OUT_SCALE	0.022435374557971954
+#define YOLOv5_S131_CONV_2D_0_126_fusion_OUT_QSCALE	92
+#define YOLOv5_S131_CONV_2D_0_126_fusion_OUT_QNORM	12
+#define YOLOv5_S131_CONV_2D_0_126_fusion_OUT_ZERO_POINT	12
+#define YOLOv5_S131_CONV_2D_0_126_fusion_Q	0
+// S132_tfl_pseudo_qconst14
+#define YOLOv5_S132_tfl_pseudo_qconst14_OUT_SCALE	0.0027572298422455788
+#define YOLOv5_S132_tfl_pseudo_qconst14_OUT_QSCALE	90
+#define YOLOv5_S132_tfl_pseudo_qconst14_OUT_QNORM	15
+#define YOLOv5_S132_tfl_pseudo_qconst14_OUT_ZERO_POINT	128
+#define YOLOv5_S132_tfl_pseudo_qconst14_Q	0
+// S133_arith_constant51
+#define YOLOv5_S133_arith_constant51_OUT_SCALE	6.185948425319748e-05
+#define YOLOv5_S133_arith_constant51_OUT_QSCALE	65
+#define YOLOv5_S133_arith_constant51_OUT_QNORM	20
+#define YOLOv5_S133_arith_constant51_OUT_ZERO_POINT	0
+#define YOLOv5_S133_arith_constant51_Q	0
+// S134_CONV_2D_0_129_fusion
+#define YOLOv5_S134_CONV_2D_0_129_fusion_OUT_SCALE	0.026830875055462708
+#define YOLOv5_S134_CONV_2D_0_129_fusion_OUT_QSCALE	110
+#define YOLOv5_S134_CONV_2D_0_129_fusion_OUT_QNORM	12
+#define YOLOv5_S134_CONV_2D_0_129_fusion_OUT_ZERO_POINT	10
+#define YOLOv5_S134_CONV_2D_0_129_fusion_Q	0
+// S135_CONCAT_0_135
+#define YOLOv5_S135_CONCAT_0_135_OUT_SCALE	0.026830875055462708
+#define YOLOv5_S135_CONCAT_0_135_OUT_QSCALE	110
+#define YOLOv5_S135_CONCAT_0_135_OUT_QNORM	12
+#define YOLOv5_S135_CONCAT_0_135_OUT_ZERO_POINT	10
+#define YOLOv5_S135_CONCAT_0_135_Q	0
+// S136_tfl_pseudo_qconst12
+#define YOLOv5_S136_tfl_pseudo_qconst12_OUT_SCALE	0.01195281557738781
+#define YOLOv5_S136_tfl_pseudo_qconst12_OUT_QSCALE	98
+#define YOLOv5_S136_tfl_pseudo_qconst12_OUT_QNORM	13
+#define YOLOv5_S136_tfl_pseudo_qconst12_OUT_ZERO_POINT	128
+#define YOLOv5_S136_tfl_pseudo_qconst12_Q	0
+// S137_arith_constant49
+#define YOLOv5_S137_arith_constant49_OUT_SCALE	0.00032070450131788065
+#define YOLOv5_S137_arith_constant49_OUT_QSCALE	84
+#define YOLOv5_S137_arith_constant49_OUT_QNORM	18
+#define YOLOv5_S137_arith_constant49_OUT_ZERO_POINT	0
+#define YOLOv5_S137_arith_constant49_Q	0
+// S138_CONV_2D_0_136_fusion
+#define YOLOv5_S138_CONV_2D_0_136_fusion_OUT_SCALE	0.027114467695355415
+#define YOLOv5_S138_CONV_2D_0_136_fusion_OUT_QSCALE	111
+#define YOLOv5_S138_CONV_2D_0_136_fusion_OUT_QNORM	12
+#define YOLOv5_S138_CONV_2D_0_136_fusion_OUT_ZERO_POINT	10
+#define YOLOv5_S138_CONV_2D_0_136_fusion_Q	0
+// S139_tfl_pseudo_qconst11
+#define YOLOv5_S139_tfl_pseudo_qconst11_OUT_SCALE	0.0016933114966377616
+#define YOLOv5_S139_tfl_pseudo_qconst11_OUT_QSCALE	111
+#define YOLOv5_S139_tfl_pseudo_qconst11_OUT_QNORM	16
+#define YOLOv5_S139_tfl_pseudo_qconst11_OUT_ZERO_POINT	128
+#define YOLOv5_S139_tfl_pseudo_qconst11_Q	0
+// S140_arith_constant48
+#define YOLOv5_S140_arith_constant48_OUT_SCALE	4.591323987375852e-05
+#define YOLOv5_S140_arith_constant48_OUT_QSCALE	96
+#define YOLOv5_S140_arith_constant48_OUT_QNORM	21
+#define YOLOv5_S140_arith_constant48_OUT_ZERO_POINT	0
+#define YOLOv5_S140_arith_constant48_Q	0
+// S141_CONV_2D_0_140_fusion
+#define YOLOv5_S141_CONV_2D_0_140_fusion_OUT_SCALE	0.028021520003676414
+#define YOLOv5_S141_CONV_2D_0_140_fusion_OUT_QSCALE	115
+#define YOLOv5_S141_CONV_2D_0_140_fusion_OUT_QNORM	12
+#define YOLOv5_S141_CONV_2D_0_140_fusion_OUT_ZERO_POINT	10
+#define YOLOv5_S141_CONV_2D_0_140_fusion_Q	0
+// S142_CONCAT_0_143
+#define YOLOv5_S142_CONCAT_0_143_OUT_SCALE	0.028021520003676414
+#define YOLOv5_S142_CONCAT_0_143_OUT_QSCALE	115
+#define YOLOv5_S142_CONCAT_0_143_OUT_QNORM	12
+#define YOLOv5_S142_CONCAT_0_143_OUT_ZERO_POINT	10
+#define YOLOv5_S142_CONCAT_0_143_Q	0
+// S143_tfl_pseudo_qconst10
+#define YOLOv5_S143_tfl_pseudo_qconst10_OUT_SCALE	0.004061033949255943
+#define YOLOv5_S143_tfl_pseudo_qconst10_OUT_QSCALE	67
+#define YOLOv5_S143_tfl_pseudo_qconst10_OUT_QNORM	14
+#define YOLOv5_S143_tfl_pseudo_qconst10_OUT_ZERO_POINT	128
+#define YOLOv5_S143_tfl_pseudo_qconst10_Q	0
+// S144_arith_constant47
+#define YOLOv5_S144_arith_constant47_OUT_SCALE	0.00011379634404468444
+#define YOLOv5_S144_arith_constant47_OUT_QSCALE	119
+#define YOLOv5_S144_arith_constant47_OUT_QNORM	20
+#define YOLOv5_S144_arith_constant47_OUT_ZERO_POINT	0
+#define YOLOv5_S144_arith_constant47_Q	0
+// S145_CONV_2D_0_144_fusion
+#define YOLOv5_S145_CONV_2D_0_144_fusion_OUT_SCALE	0.023495662957429886
+#define YOLOv5_S145_CONV_2D_0_144_fusion_OUT_QSCALE	96
+#define YOLOv5_S145_CONV_2D_0_144_fusion_OUT_QNORM	12
+#define YOLOv5_S145_CONV_2D_0_144_fusion_OUT_ZERO_POINT	12
+#define YOLOv5_S145_CONV_2D_0_144_fusion_Q	0
+// S146_CONV_2D_0_144_split
+#define YOLOv5_S146_CONV_2D_0_144_split_OUT_SCALE	0.023495662957429886
+#define YOLOv5_S146_CONV_2D_0_144_split_OUT_QSCALE	96
+#define YOLOv5_S146_CONV_2D_0_144_split_OUT_QNORM	12
+#define YOLOv5_S146_CONV_2D_0_144_split_OUT_ZERO_POINT	12
+#define YOLOv5_S146_CONV_2D_0_144_split_Q	0
+#define YOLOv5_S146_CONV_2D_0_144_split_Q	0
+// S147_arith_constant33
+#define YOLOv5_S147_arith_constant33_OUT_SCALE	0.003647965844720602
+#define YOLOv5_S147_arith_constant33_OUT_QSCALE	120
+#define YOLOv5_S147_arith_constant33_OUT_QNORM	15
+#define YOLOv5_S147_arith_constant33_OUT_ZERO_POINT	128
+#define YOLOv5_S147_arith_constant33_Q	0
+// S148_arith_constant46
+#define YOLOv5_S148_arith_constant46_OUT_SCALE	8.571137596777127e-05
+#define YOLOv5_S148_arith_constant46_OUT_QSCALE	90
+#define YOLOv5_S148_arith_constant46_OUT_QNORM	20
+#define YOLOv5_S148_arith_constant46_OUT_ZERO_POINT	0
+#define YOLOv5_S148_arith_constant46_Q	0
+// S149_CONV_2D_0_147_fusion
+#define YOLOv5_S149_CONV_2D_0_147_fusion_OUT_SCALE	0.022523408755660057
+#define YOLOv5_S149_CONV_2D_0_147_fusion_OUT_QSCALE	92
+#define YOLOv5_S149_CONV_2D_0_147_fusion_OUT_QNORM	12
+#define YOLOv5_S149_CONV_2D_0_147_fusion_OUT_ZERO_POINT	12
+#define YOLOv5_S149_CONV_2D_0_147_fusion_Q	0
+// S150_tfl_pseudo_qconst9
+#define YOLOv5_S150_tfl_pseudo_qconst9_OUT_SCALE	0.0038016275502741337
+#define YOLOv5_S150_tfl_pseudo_qconst9_OUT_QSCALE	125
+#define YOLOv5_S150_tfl_pseudo_qconst9_OUT_QNORM	15
+#define YOLOv5_S150_tfl_pseudo_qconst9_OUT_ZERO_POINT	128
+#define YOLOv5_S150_tfl_pseudo_qconst9_Q	0
+// S151_arith_constant45
+#define YOLOv5_S151_arith_constant45_OUT_SCALE	8.562561125160292e-05
+#define YOLOv5_S151_arith_constant45_OUT_QSCALE	90
+#define YOLOv5_S151_arith_constant45_OUT_QNORM	20
+#define YOLOv5_S151_arith_constant45_OUT_ZERO_POINT	0
+#define YOLOv5_S151_arith_constant45_Q	0
+// S152_CONV_2D_0_150_fusion
+#define YOLOv5_S152_CONV_2D_0_150_fusion_OUT_SCALE	0.023495662957429886
+#define YOLOv5_S152_CONV_2D_0_150_fusion_OUT_QSCALE	96
+#define YOLOv5_S152_CONV_2D_0_150_fusion_OUT_QNORM	12
+#define YOLOv5_S152_CONV_2D_0_150_fusion_OUT_ZERO_POINT	12
+#define YOLOv5_S152_CONV_2D_0_150_fusion_Q	0
+// S153_CONCAT_0_156
+#define YOLOv5_S153_CONCAT_0_156_OUT_SCALE	0.023495662957429886
+#define YOLOv5_S153_CONCAT_0_156_OUT_QSCALE	96
+#define YOLOv5_S153_CONCAT_0_156_OUT_QNORM	12
+#define YOLOv5_S153_CONCAT_0_156_OUT_ZERO_POINT	12
+#define YOLOv5_S153_CONCAT_0_156_Q	0
+// S154_tfl_pseudo_qconst7
+#define YOLOv5_S154_tfl_pseudo_qconst7_OUT_SCALE	0.004375981632620096
+#define YOLOv5_S154_tfl_pseudo_qconst7_OUT_QSCALE	72
+#define YOLOv5_S154_tfl_pseudo_qconst7_OUT_QNORM	14
+#define YOLOv5_S154_tfl_pseudo_qconst7_OUT_ZERO_POINT	128
+#define YOLOv5_S154_tfl_pseudo_qconst7_Q	0
+// S155_arith_constant43
+#define YOLOv5_S155_arith_constant43_OUT_SCALE	0.00010281658954794555
+#define YOLOv5_S155_arith_constant43_OUT_QSCALE	108
+#define YOLOv5_S155_arith_constant43_OUT_QNORM	20
+#define YOLOv5_S155_arith_constant43_OUT_ZERO_POINT	0
+#define YOLOv5_S155_arith_constant43_Q	0
+// S156_CONV_2D_0_157_fusion
+#define YOLOv5_S156_CONV_2D_0_157_fusion_OUT_SCALE	0.025290563702583313
+#define YOLOv5_S156_CONV_2D_0_157_fusion_OUT_QSCALE	104
+#define YOLOv5_S156_CONV_2D_0_157_fusion_OUT_QNORM	12
+#define YOLOv5_S156_CONV_2D_0_157_fusion_OUT_ZERO_POINT	11
+#define YOLOv5_S156_CONV_2D_0_157_fusion_Q	0
+// S157_tfl_pseudo_qconst6
+#define YOLOv5_S157_tfl_pseudo_qconst6_OUT_SCALE	0.0010564669501036406
+#define YOLOv5_S157_tfl_pseudo_qconst6_OUT_QSCALE	69
+#define YOLOv5_S157_tfl_pseudo_qconst6_OUT_QNORM	16
+#define YOLOv5_S157_tfl_pseudo_qconst6_OUT_ZERO_POINT	128
+#define YOLOv5_S157_tfl_pseudo_qconst6_Q	0
+// S158_arith_constant42
+#define YOLOv5_S158_arith_constant42_OUT_SCALE	2.6718644701270028e-05
+#define YOLOv5_S158_arith_constant42_OUT_QSCALE	112
+#define YOLOv5_S158_arith_constant42_OUT_QNORM	22
+#define YOLOv5_S158_arith_constant42_OUT_ZERO_POINT	0
+#define YOLOv5_S158_arith_constant42_Q	0
+// S159_CONV_2D_0_161_fusion
+#define YOLOv5_S159_CONV_2D_0_161_fusion_OUT_SCALE	0.02980038538282993
+#define YOLOv5_S159_CONV_2D_0_161_fusion_OUT_QSCALE	122
+#define YOLOv5_S159_CONV_2D_0_161_fusion_OUT_QNORM	12
+#define YOLOv5_S159_CONV_2D_0_161_fusion_OUT_ZERO_POINT	9
+#define YOLOv5_S159_CONV_2D_0_161_fusion_Q	0
+// S160_CONCAT_0_164
+#define YOLOv5_S160_CONCAT_0_164_OUT_SCALE	0.02980038538282993
+#define YOLOv5_S160_CONCAT_0_164_OUT_QSCALE	122
+#define YOLOv5_S160_CONCAT_0_164_OUT_QNORM	12
+#define YOLOv5_S160_CONCAT_0_164_OUT_ZERO_POINT	9
+#define YOLOv5_S160_CONCAT_0_164_Q	0
+// S161_tfl_pseudo_qconst5
+#define YOLOv5_S161_tfl_pseudo_qconst5_OUT_SCALE	0.0022851326502859592
+#define YOLOv5_S161_tfl_pseudo_qconst5_OUT_QSCALE	75
+#define YOLOv5_S161_tfl_pseudo_qconst5_OUT_QNORM	15
+#define YOLOv5_S161_tfl_pseudo_qconst5_OUT_ZERO_POINT	128
+#define YOLOv5_S161_tfl_pseudo_qconst5_Q	0
+// S162_arith_constant41
+#define YOLOv5_S162_arith_constant41_OUT_SCALE	6.809783362940912e-05
+#define YOLOv5_S162_arith_constant41_OUT_QSCALE	71
+#define YOLOv5_S162_arith_constant41_OUT_QNORM	20
+#define YOLOv5_S162_arith_constant41_OUT_ZERO_POINT	0
+#define YOLOv5_S162_arith_constant41_Q	0
+// S163_CONV_2D_0_165_fusion
+#define YOLOv5_S163_CONV_2D_0_165_fusion_OUT_SCALE	0.028310241177678108
+#define YOLOv5_S163_CONV_2D_0_165_fusion_OUT_QSCALE	116
+#define YOLOv5_S163_CONV_2D_0_165_fusion_OUT_QNORM	12
+#define YOLOv5_S163_CONV_2D_0_165_fusion_OUT_ZERO_POINT	10
+#define YOLOv5_S163_CONV_2D_0_165_fusion_Q	0
+// S164_CONV_2D_0_165_split
+#define YOLOv5_S164_CONV_2D_0_165_split_OUT_SCALE	0.028310241177678108
+#define YOLOv5_S164_CONV_2D_0_165_split_OUT_QSCALE	116
+#define YOLOv5_S164_CONV_2D_0_165_split_OUT_QNORM	12
+#define YOLOv5_S164_CONV_2D_0_165_split_OUT_ZERO_POINT	10
+#define YOLOv5_S164_CONV_2D_0_165_split_Q	0
+#define YOLOv5_S164_CONV_2D_0_165_split_Q	0
+// S165_CONV_2D_0_165_split_copy_qout0
+#define YOLOv5_S165_CONV_2D_0_165_split_copy_qout0_OUT_SCALE	0.03214006870985031
+#define YOLOv5_S165_CONV_2D_0_165_split_copy_qout0_OUT_QSCALE	66
+#define YOLOv5_S165_CONV_2D_0_165_split_copy_qout0_OUT_QNORM	11
+#define YOLOv5_S165_CONV_2D_0_165_split_copy_qout0_OUT_ZERO_POINT	9
+#define YOLOv5_S165_CONV_2D_0_165_split_copy_qout0_Q	0
+// S166_tfl_pseudo_qconst4
+#define YOLOv5_S166_tfl_pseudo_qconst4_OUT_SCALE	0.0032205518800765276
+#define YOLOv5_S166_tfl_pseudo_qconst4_OUT_QSCALE	106
+#define YOLOv5_S166_tfl_pseudo_qconst4_OUT_QNORM	15
+#define YOLOv5_S166_tfl_pseudo_qconst4_OUT_ZERO_POINT	128
+#define YOLOv5_S166_tfl_pseudo_qconst4_Q	0
+// S167_arith_constant40
+#define YOLOv5_S167_arith_constant40_OUT_SCALE	9.117460045019116e-05
+#define YOLOv5_S167_arith_constant40_OUT_QSCALE	96
+#define YOLOv5_S167_arith_constant40_OUT_QNORM	20
+#define YOLOv5_S167_arith_constant40_OUT_ZERO_POINT	0
+#define YOLOv5_S167_arith_constant40_Q	0
+// S168_CONV_2D_0_168_fusion
+#define YOLOv5_S168_CONV_2D_0_168_fusion_OUT_SCALE	0.027693968266248703
+#define YOLOv5_S168_CONV_2D_0_168_fusion_OUT_QSCALE	113
+#define YOLOv5_S168_CONV_2D_0_168_fusion_OUT_QNORM	12
+#define YOLOv5_S168_CONV_2D_0_168_fusion_OUT_ZERO_POINT	10
+#define YOLOv5_S168_CONV_2D_0_168_fusion_Q	0
+// S169_tfl_pseudo_qconst3
+#define YOLOv5_S169_tfl_pseudo_qconst3_OUT_SCALE	0.0024259297642856836
+#define YOLOv5_S169_tfl_pseudo_qconst3_OUT_QSCALE	79
+#define YOLOv5_S169_tfl_pseudo_qconst3_OUT_QNORM	15
+#define YOLOv5_S169_tfl_pseudo_qconst3_OUT_ZERO_POINT	128
+#define YOLOv5_S169_tfl_pseudo_qconst3_Q	0
+// S170_arith_constant39
+#define YOLOv5_S170_arith_constant39_OUT_SCALE	6.718362190827592e-05
+#define YOLOv5_S170_arith_constant39_OUT_QSCALE	70
+#define YOLOv5_S170_arith_constant39_OUT_QNORM	20
+#define YOLOv5_S170_arith_constant39_OUT_ZERO_POINT	0
+#define YOLOv5_S170_arith_constant39_Q	0
+// S171_CONV_2D_0_171_fusion
+#define YOLOv5_S171_CONV_2D_0_171_fusion_OUT_SCALE	0.03214006870985031
+#define YOLOv5_S171_CONV_2D_0_171_fusion_OUT_QSCALE	66
+#define YOLOv5_S171_CONV_2D_0_171_fusion_OUT_QNORM	11
+#define YOLOv5_S171_CONV_2D_0_171_fusion_OUT_ZERO_POINT	9
+#define YOLOv5_S171_CONV_2D_0_171_fusion_Q	0
+// S172_CONCAT_0_177
+#define YOLOv5_S172_CONCAT_0_177_OUT_SCALE	0.03214006870985031
+#define YOLOv5_S172_CONCAT_0_177_OUT_QSCALE	66
+#define YOLOv5_S172_CONCAT_0_177_OUT_QNORM	11
+#define YOLOv5_S172_CONCAT_0_177_OUT_ZERO_POINT	9
+#define YOLOv5_S172_CONCAT_0_177_Q	0
+// S173_tfl_pseudo_qconst1
+#define YOLOv5_S173_tfl_pseudo_qconst1_OUT_SCALE	0.008687231689691544
+#define YOLOv5_S173_tfl_pseudo_qconst1_OUT_QSCALE	71
+#define YOLOv5_S173_tfl_pseudo_qconst1_OUT_QNORM	13
+#define YOLOv5_S173_tfl_pseudo_qconst1_OUT_ZERO_POINT	128
+#define YOLOv5_S173_tfl_pseudo_qconst1_Q	0
+// S174_arith_constant37
+#define YOLOv5_S174_arith_constant37_OUT_SCALE	0.00027920822340507523
+#define YOLOv5_S174_arith_constant37_OUT_QSCALE	73
+#define YOLOv5_S174_arith_constant37_OUT_QNORM	18
+#define YOLOv5_S174_arith_constant37_OUT_ZERO_POINT	0
+#define YOLOv5_S174_arith_constant37_Q	0
+// S175_CONV_2D_0_178_fusion
+#define YOLOv5_S175_CONV_2D_0_178_fusion_OUT_SCALE	0.03277665749192238
+#define YOLOv5_S175_CONV_2D_0_178_fusion_OUT_QSCALE	67
+#define YOLOv5_S175_CONV_2D_0_178_fusion_OUT_QNORM	11
+#define YOLOv5_S175_CONV_2D_0_178_fusion_OUT_ZERO_POINT	8
+#define YOLOv5_S175_CONV_2D_0_178_fusion_Q	0
+// S176_tfl_pseudo_qconst
+#define YOLOv5_S176_tfl_pseudo_qconst_OUT_SCALE	0.0037543829530477524
+#define YOLOv5_S176_tfl_pseudo_qconst_OUT_QSCALE	123
+#define YOLOv5_S176_tfl_pseudo_qconst_OUT_QNORM	15
+#define YOLOv5_S176_tfl_pseudo_qconst_OUT_ZERO_POINT	128
+#define YOLOv5_S176_tfl_pseudo_qconst_Q	0
+// S177_arith_constant36
+#define YOLOv5_S177_arith_constant36_OUT_SCALE	0.00012305612414555828
+#define YOLOv5_S177_arith_constant36_OUT_QSCALE	65
+#define YOLOv5_S177_arith_constant36_OUT_QNORM	19
+#define YOLOv5_S177_arith_constant36_OUT_ZERO_POINT	0
+#define YOLOv5_S177_arith_constant36_Q	0
+// S178_CONV_2D_0_181
+#define YOLOv5_S178_CONV_2D_0_181_OUT_SCALE	0.04913385826771654
+#define YOLOv5_S178_CONV_2D_0_181_OUT_QSCALE	101
+#define YOLOv5_S178_CONV_2D_0_181_OUT_QNORM	11
+#define YOLOv5_S178_CONV_2D_0_181_OUT_ZERO_POINT	128
+#define YOLOv5_S178_CONV_2D_0_181_Q	0
+// S180_STRIDED_SLICE_0_183_split
+#define YOLOv5_S180_STRIDED_SLICE_0_183_split_OUT_SCALE	0.04913385826771654
+#define YOLOv5_S180_STRIDED_SLICE_0_183_split_OUT_QSCALE	101
+#define YOLOv5_S180_STRIDED_SLICE_0_183_split_OUT_QNORM	11
+#define YOLOv5_S180_STRIDED_SLICE_0_183_split_OUT_ZERO_POINT	128
+#define YOLOv5_S180_STRIDED_SLICE_0_183_split_Q	0
+#define YOLOv5_S180_STRIDED_SLICE_0_183_split_Q	0
+#define YOLOv5_S180_STRIDED_SLICE_0_183_split_Q	0
+// S181_LOGISTIC_0_195
+#define YOLOv5_S181_LOGISTIC_0_195_OUT_SCALE	0.00392156862745098
+#define YOLOv5_S181_LOGISTIC_0_195_OUT_QSCALE	64
+#define YOLOv5_S181_LOGISTIC_0_195_OUT_QNORM	14
+#define YOLOv5_S181_LOGISTIC_0_195_OUT_ZERO_POINT	0
+#define YOLOv5_S181_LOGISTIC_0_195_Q	0
+// S183_CONCAT_0_196_reshape_2_qout0
+#define YOLOv5_S183_CONCAT_0_196_reshape_2_qout0_OUT_SCALE	0.008081509731709957
+#define YOLOv5_S183_CONCAT_0_196_reshape_2_qout0_OUT_QSCALE	66
+#define YOLOv5_S183_CONCAT_0_196_reshape_2_qout0_OUT_QNORM	13
+#define YOLOv5_S183_CONCAT_0_196_reshape_2_qout0_OUT_ZERO_POINT	128
+#define YOLOv5_S183_CONCAT_0_196_reshape_2_qout0_Q	0
+// S184_arith_constant18
+#define YOLOv5_S184_arith_constant18_OUT_SCALE	0.0984251968503937
+#define YOLOv5_S184_arith_constant18_OUT_QSCALE	101
+#define YOLOv5_S184_arith_constant18_OUT_QNORM	10
+#define YOLOv5_S184_arith_constant18_OUT_ZERO_POINT	0
+#define YOLOv5_S184_arith_constant18_Q	0
+// S185_arith_constant20
+#define YOLOv5_S185_arith_constant20_OUT_SCALE	1.7575928794704084e-05
+#define YOLOv5_S185_arith_constant20_OUT_QSCALE	74
+#define YOLOv5_S185_arith_constant20_OUT_QNORM	22
+#define YOLOv5_S185_arith_constant20_OUT_ZERO_POINT	0
+#define YOLOv5_S185_arith_constant20_Q	0
+// S186_expr_1
+#define YOLOv5_S186_expr_1_OUT_SCALE	0.008081509731709957
+#define YOLOv5_S186_expr_1_OUT_QSCALE	66
+#define YOLOv5_S186_expr_1_OUT_QNORM	13
+#define YOLOv5_S186_expr_1_OUT_ZERO_POINT	128
+#define YOLOv5_S186_expr_1_Q	0
+// S187_arith_constant19
+#define YOLOv5_S187_arith_constant19_OUT_SCALE	11.748031496062993
+#define YOLOv5_S187_arith_constant19_OUT_QSCALE	94
+#define YOLOv5_S187_arith_constant19_OUT_QNORM	3
+#define YOLOv5_S187_arith_constant19_OUT_ZERO_POINT	0
+#define YOLOv5_S187_arith_constant19_Q	0
+// S188_arith_constant88
+#define YOLOv5_S188_arith_constant88_OUT_SCALE	0.0026451770681887865
+#define YOLOv5_S188_arith_constant88_OUT_QSCALE	87
+#define YOLOv5_S188_arith_constant88_OUT_QNORM	15
+#define YOLOv5_S188_arith_constant88_OUT_ZERO_POINT	128
+#define YOLOv5_S188_arith_constant88_Q	0
+// S189_arith_constant35
+#define YOLOv5_S189_arith_constant35_OUT_SCALE	6.689801914764107e-05
+#define YOLOv5_S189_arith_constant35_OUT_QSCALE	70
+#define YOLOv5_S189_arith_constant35_OUT_QNORM	20
+#define YOLOv5_S189_arith_constant35_OUT_ZERO_POINT	0
+#define YOLOv5_S189_arith_constant35_Q	0
+// S190_CONV_2D_0_198
+#define YOLOv5_S190_CONV_2D_0_198_OUT_SCALE	0.04913385826771654
+#define YOLOv5_S190_CONV_2D_0_198_OUT_QSCALE	101
+#define YOLOv5_S190_CONV_2D_0_198_OUT_QNORM	11
+#define YOLOv5_S190_CONV_2D_0_198_OUT_ZERO_POINT	128
+#define YOLOv5_S190_CONV_2D_0_198_Q	0
+// S192_STRIDED_SLICE_0_200_split
+#define YOLOv5_S192_STRIDED_SLICE_0_200_split_OUT_SCALE	0.04913385826771654
+#define YOLOv5_S192_STRIDED_SLICE_0_200_split_OUT_QSCALE	101
+#define YOLOv5_S192_STRIDED_SLICE_0_200_split_OUT_QNORM	11
+#define YOLOv5_S192_STRIDED_SLICE_0_200_split_OUT_ZERO_POINT	128
+#define YOLOv5_S192_STRIDED_SLICE_0_200_split_Q	0
+#define YOLOv5_S192_STRIDED_SLICE_0_200_split_Q	0
+#define YOLOv5_S192_STRIDED_SLICE_0_200_split_Q	0
+// S193_LOGISTIC_0_212
+#define YOLOv5_S193_LOGISTIC_0_212_OUT_SCALE	0.00392156862745098
+#define YOLOv5_S193_LOGISTIC_0_212_OUT_QSCALE	64
+#define YOLOv5_S193_LOGISTIC_0_212_OUT_QNORM	14
+#define YOLOv5_S193_LOGISTIC_0_212_OUT_ZERO_POINT	0
+#define YOLOv5_S193_LOGISTIC_0_212_Q	0
+// S195_CONCAT_0_213_reshape_2_qout0
+#define YOLOv5_S195_CONCAT_0_213_reshape_2_qout0_OUT_SCALE	0.008081509731709957
+#define YOLOv5_S195_CONCAT_0_213_reshape_2_qout0_OUT_QSCALE	66
+#define YOLOv5_S195_CONCAT_0_213_reshape_2_qout0_OUT_QNORM	13
+#define YOLOv5_S195_CONCAT_0_213_reshape_2_qout0_OUT_ZERO_POINT	128
+#define YOLOv5_S195_CONCAT_0_213_reshape_2_qout0_Q	0
+// S196_arith_constant16
+#define YOLOv5_S196_arith_constant16_OUT_SCALE	0.20866141732283464
+#define YOLOv5_S196_arith_constant16_OUT_QSCALE	107
+#define YOLOv5_S196_arith_constant16_OUT_QNORM	9
+#define YOLOv5_S196_arith_constant16_OUT_ZERO_POINT	0
+#define YOLOv5_S196_arith_constant16_Q	0
+// S197_arith_constant17
+#define YOLOv5_S197_arith_constant17_OUT_SCALE	3.748031496062992
+#define YOLOv5_S197_arith_constant17_OUT_QSCALE	120
+#define YOLOv5_S197_arith_constant17_OUT_QNORM	5
+#define YOLOv5_S197_arith_constant17_OUT_ZERO_POINT	0
+#define YOLOv5_S197_arith_constant17_Q	0
+// S198_arith_constant87
+#define YOLOv5_S198_arith_constant87_OUT_SCALE	0.0023452879395335913
+#define YOLOv5_S198_arith_constant87_OUT_QSCALE	77
+#define YOLOv5_S198_arith_constant87_OUT_QNORM	15
+#define YOLOv5_S198_arith_constant87_OUT_ZERO_POINT	128
+#define YOLOv5_S198_arith_constant87_Q	0
+// S199_arith_constant34
+#define YOLOv5_S199_arith_constant34_OUT_SCALE	6.359123407279023e-05
+#define YOLOv5_S199_arith_constant34_OUT_QSCALE	67
+#define YOLOv5_S199_arith_constant34_OUT_QNORM	20
+#define YOLOv5_S199_arith_constant34_OUT_ZERO_POINT	0
+#define YOLOv5_S199_arith_constant34_Q	0
+// S200_CONV_2D_0_215
+#define YOLOv5_S200_CONV_2D_0_215_OUT_SCALE	0.04913385826771654
+#define YOLOv5_S200_CONV_2D_0_215_OUT_QSCALE	101
+#define YOLOv5_S200_CONV_2D_0_215_OUT_QNORM	11
+#define YOLOv5_S200_CONV_2D_0_215_OUT_ZERO_POINT	128
+#define YOLOv5_S200_CONV_2D_0_215_Q	0
+// S202_STRIDED_SLICE_0_217_split
+#define YOLOv5_S202_STRIDED_SLICE_0_217_split_OUT_SCALE	0.04913385826771654
+#define YOLOv5_S202_STRIDED_SLICE_0_217_split_OUT_QSCALE	101
+#define YOLOv5_S202_STRIDED_SLICE_0_217_split_OUT_QNORM	11
+#define YOLOv5_S202_STRIDED_SLICE_0_217_split_OUT_ZERO_POINT	128
+#define YOLOv5_S202_STRIDED_SLICE_0_217_split_Q	0
+#define YOLOv5_S202_STRIDED_SLICE_0_217_split_Q	0
+#define YOLOv5_S202_STRIDED_SLICE_0_217_split_Q	0
+// S203_LOGISTIC_0_229
+#define YOLOv5_S203_LOGISTIC_0_229_OUT_SCALE	0.00392156862745098
+#define YOLOv5_S203_LOGISTIC_0_229_OUT_QSCALE	64
+#define YOLOv5_S203_LOGISTIC_0_229_OUT_QNORM	14
+#define YOLOv5_S203_LOGISTIC_0_229_OUT_ZERO_POINT	0
+#define YOLOv5_S203_LOGISTIC_0_229_Q	0
+// S205_CONCAT_0_230_reshape_2_qout0
+#define YOLOv5_S205_CONCAT_0_230_reshape_2_qout0_OUT_SCALE	0.008081509731709957
+#define YOLOv5_S205_CONCAT_0_230_reshape_2_qout0_OUT_QSCALE	66
+#define YOLOv5_S205_CONCAT_0_230_reshape_2_qout0_OUT_QNORM	13
+#define YOLOv5_S205_CONCAT_0_230_reshape_2_qout0_OUT_ZERO_POINT	128
+#define YOLOv5_S205_CONCAT_0_230_reshape_2_qout0_Q	0
+// S206_arith_constant14
+#define YOLOv5_S206_arith_constant14_OUT_SCALE	0.42913385826771655
+#define YOLOv5_S206_arith_constant14_OUT_QSCALE	110
+#define YOLOv5_S206_arith_constant14_OUT_QNORM	8
+#define YOLOv5_S206_arith_constant14_OUT_ZERO_POINT	0
+#define YOLOv5_S206_arith_constant14_Q	0
+// S207_arith_constant15
+#define YOLOv5_S207_arith_constant15_OUT_SCALE	1.0393700787401574
+#define YOLOv5_S207_arith_constant15_OUT_QSCALE	67
+#define YOLOv5_S207_arith_constant15_OUT_QNORM	6
+#define YOLOv5_S207_arith_constant15_OUT_ZERO_POINT	0
+#define YOLOv5_S207_arith_constant15_Q	0
+// S208_arith_constant20_1
+#define YOLOv5_S208_arith_constant20_1_OUT_SCALE	1.7575928794704084e-05
+#define YOLOv5_S208_arith_constant20_1_OUT_QSCALE	74
+#define YOLOv5_S208_arith_constant20_1_OUT_QNORM	22
+#define YOLOv5_S208_arith_constant20_1_OUT_ZERO_POINT	0
+#define YOLOv5_S208_arith_constant20_1_Q	0
+// S209_expr_32
+#define YOLOv5_S209_expr_32_OUT_SCALE	0.008081509731709957
+#define YOLOv5_S209_expr_32_OUT_QSCALE	66
+#define YOLOv5_S209_expr_32_OUT_QNORM	13
+#define YOLOv5_S209_expr_32_OUT_ZERO_POINT	128
+#define YOLOv5_S209_expr_32_Q	0
+// S210_CONCAT_0_196
+#define YOLOv5_S210_CONCAT_0_196_OUT_SCALE	0.008081509731709957
+#define YOLOv5_S210_CONCAT_0_196_OUT_QSCALE	66
+#define YOLOv5_S210_CONCAT_0_196_OUT_QNORM	13
+#define YOLOv5_S210_CONCAT_0_196_OUT_ZERO_POINT	128
+#define YOLOv5_S210_CONCAT_0_196_Q	0
+// S212_arith_constant20_2
+#define YOLOv5_S212_arith_constant20_2_OUT_SCALE	1.7575928794704084e-05
+#define YOLOv5_S212_arith_constant20_2_OUT_QSCALE	74
+#define YOLOv5_S212_arith_constant20_2_OUT_QNORM	22
+#define YOLOv5_S212_arith_constant20_2_OUT_ZERO_POINT	0
+#define YOLOv5_S212_arith_constant20_2_Q	0
+// S213_expr_2
+#define YOLOv5_S213_expr_2_OUT_SCALE	0.008081509731709957
+#define YOLOv5_S213_expr_2_OUT_QSCALE	66
+#define YOLOv5_S213_expr_2_OUT_QNORM	13
+#define YOLOv5_S213_expr_2_OUT_ZERO_POINT	128
+#define YOLOv5_S213_expr_2_Q	0
+// S214_arith_constant20_3
+#define YOLOv5_S214_arith_constant20_3_OUT_SCALE	1.7575928794704084e-05
+#define YOLOv5_S214_arith_constant20_3_OUT_QSCALE	74
+#define YOLOv5_S214_arith_constant20_3_OUT_QNORM	22
+#define YOLOv5_S214_arith_constant20_3_OUT_ZERO_POINT	0
+#define YOLOv5_S214_arith_constant20_3_Q	0
+// S215_expr_34
+#define YOLOv5_S215_expr_34_OUT_SCALE	0.008081509731709957
+#define YOLOv5_S215_expr_34_OUT_QSCALE	66
+#define YOLOv5_S215_expr_34_OUT_QNORM	13
+#define YOLOv5_S215_expr_34_OUT_ZERO_POINT	128
+#define YOLOv5_S215_expr_34_Q	0
+// S216_CONCAT_0_213
+#define YOLOv5_S216_CONCAT_0_213_OUT_SCALE	0.008081509731709957
+#define YOLOv5_S216_CONCAT_0_213_OUT_QSCALE	66
+#define YOLOv5_S216_CONCAT_0_213_OUT_QNORM	13
+#define YOLOv5_S216_CONCAT_0_213_OUT_ZERO_POINT	128
+#define YOLOv5_S216_CONCAT_0_213_Q	0
+// S218_arith_constant20_4
+#define YOLOv5_S218_arith_constant20_4_OUT_SCALE	1.7575928794704084e-05
+#define YOLOv5_S218_arith_constant20_4_OUT_QSCALE	74
+#define YOLOv5_S218_arith_constant20_4_OUT_QNORM	22
+#define YOLOv5_S218_arith_constant20_4_OUT_ZERO_POINT	0
+#define YOLOv5_S218_arith_constant20_4_Q	0
+// S219_expr_3
+#define YOLOv5_S219_expr_3_OUT_SCALE	0.008081509731709957
+#define YOLOv5_S219_expr_3_OUT_QSCALE	66
+#define YOLOv5_S219_expr_3_OUT_QNORM	13
+#define YOLOv5_S219_expr_3_OUT_ZERO_POINT	128
+#define YOLOv5_S219_expr_3_Q	0
+// S220_arith_constant20_5
+#define YOLOv5_S220_arith_constant20_5_OUT_SCALE	1.7575928794704084e-05
+#define YOLOv5_S220_arith_constant20_5_OUT_QSCALE	74
+#define YOLOv5_S220_arith_constant20_5_OUT_QNORM	22
+#define YOLOv5_S220_arith_constant20_5_OUT_ZERO_POINT	0
+#define YOLOv5_S220_arith_constant20_5_Q	0
+// S221_expr_35
+#define YOLOv5_S221_expr_35_OUT_SCALE	0.008081509731709957
+#define YOLOv5_S221_expr_35_OUT_QSCALE	66
+#define YOLOv5_S221_expr_35_OUT_QNORM	13
+#define YOLOv5_S221_expr_35_OUT_ZERO_POINT	128
+#define YOLOv5_S221_expr_35_Q	0
+// S222_CONCAT_0_230
+#define YOLOv5_S222_CONCAT_0_230_OUT_SCALE	0.008081509731709957
+#define YOLOv5_S222_CONCAT_0_230_OUT_QSCALE	66
+#define YOLOv5_S222_CONCAT_0_230_OUT_QNORM	13
+#define YOLOv5_S222_CONCAT_0_230_OUT_ZERO_POINT	128
+#define YOLOv5_S222_CONCAT_0_230_Q	0
+// S224_CONCAT_0_232
+#define YOLOv5_S224_CONCAT_0_232_OUT_SCALE	0.008081509731709957
+#define YOLOv5_S224_CONCAT_0_232_OUT_QSCALE	66
+#define YOLOv5_S224_CONCAT_0_232_OUT_QNORM	13
+#define YOLOv5_S224_CONCAT_0_232_OUT_ZERO_POINT	128
+#define YOLOv5_S224_CONCAT_0_232_Q	0
+// S226_CONCAT_0_232_reshape_copy
+#define YOLOv5_S226_CONCAT_0_232_reshape_copy_OUT_SCALE	0.008081509731709957
+#define YOLOv5_S226_CONCAT_0_232_reshape_copy_OUT_QSCALE	66
+#define YOLOv5_S226_CONCAT_0_232_reshape_copy_OUT_QNORM	13
+#define YOLOv5_S226_CONCAT_0_232_reshape_copy_OUT_ZERO_POINT	128
+#define YOLOv5_S226_CONCAT_0_232_reshape_copy_Q	0
+// Output_1
+#define YOLOv5_Output_1_OUT_SCALE	0.008081509731709957
+#define YOLOv5_Output_1_OUT_QSCALE	66
+#define YOLOv5_Output_1_OUT_QNORM	13
+#define YOLOv5_Output_1_OUT_ZERO_POINT	128
+#define YOLOv5_Output_1_Q	0
+#endif //YOLOV5_GRAPHINFO_H
