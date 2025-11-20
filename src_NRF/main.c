@@ -63,6 +63,26 @@
 #include "ilps28qsw_reg.h"
 #include "ism330dhcx_reg.h"
 
+// To remove logging errors in IntelliSense
+#ifdef __INTELLISENSE__
+#ifdef LOG_ERR
+#undef LOG_ERR
+#endif
+#ifdef LOG_WRN
+#undef LOG_WRN
+#endif
+#ifdef LOG_INF
+#undef LOG_INF
+#endif
+#ifdef LOG_DBG
+#undef LOG_DBG
+#endif
+#define LOG_ERR(...) ((void)0)
+#define LOG_WRN(...) ((void)0)
+#define LOG_INF(...) ((void)0)
+#define LOG_DBG(...) ((void)0)
+#endif
+
 // Required to allow overwriting the boot mode of GAP9 via the debug PCB
 #define LED_NODE DT_NODELABEL(led_0)
 #define UART_GAP_NODE DT_NODELABEL(uart_gap)
