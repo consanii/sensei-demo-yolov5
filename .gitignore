@@ -39,4 +39,8 @@ src_GAP/**/*.png
 src_GAP/**/*.ppm
 src_GAP/**/*.jpg
 
+# Images in the serial_to_db folder
+serial_to_db/**/*.png
+serial_to_db/**/*.jpg
+
 serial_log.log
