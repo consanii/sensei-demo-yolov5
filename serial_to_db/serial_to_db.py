@@ -1,6 +1,18 @@
 #!/usr/bin/env python3
 
-"""Stream YOLO detections from GAP9 to InfluxDB v2 and archive frames locally."""
+"""
+@file serial_to_db.py
+@brief Stream YOLO detections from GAP9 to InfluxDB v2 and archive frames locally.
+
+@details
+This module implements a real-time data acquisition system for YOLO object detection
+results transmitted over UART from a GAP9 microcontroller. It decodes framed serial
+packets containing bounding box coordinates, JPEG image frames, and device logs, then
+persists the data to both local filesystem and InfluxDB time-series database.
+
+@author Mattia Consani
+@date 2025
+"""
 
 import argparse
 import configparser
@@ -25,28 +37,54 @@ import picamera
 
 
 # --------------- Constants  -------------
+
+# InfluxDB Configuration
+# Path to INI configuration file (config.ini)
 _ini_path = Path(__file__).resolve().parent / "config.ini"
+
+# InfluxDB authentication token (loaded from config.ini)
 token: Optional[str] = None
+# InfluxDB organization name
 org: Optional[str] = None
+# InfluxDB server URL
 url: Optional[str] = None
+# InfluxDB bucket name for data storage
 bucket: Optional[str] = None
+# InfluxDB measurement name for YOLO detections
 measurement: Optional[str] = None
 
+# Image Processing Configuration
+# Target image width in pixels
 INPUT_W = 512
+# Target image height in pixels
 INPUT_H = 512
 
-UART_START_BBOX = b"\xAB\xBA"
-UART_END_BBOX = b"\xAC\xCA"
-
-UART_START_JPEG = b"\xBC\xCB"
-UART_END_JPEG = b"\xBD\xDB"
-
+# Flip bounding box coordinates horizontally
 FLIP_X = True
+# Flip bounding box coordinates vertically
 FLIP_Y = False
 
+# UART Protocol Constants - Frame delimiters
+# Start marker for bounding box frame (0xABBA)
+UART_START_BBOX = b"\xAB\xBA"
+# End marker for bounding box frame (0xACCA)
+UART_END_BBOX = b"\xAC\xCA"
+
+# Start marker for JPEG image frame (0xBCCB)
+UART_START_JPEG = b"\xBC\xCB"
+# End marker for JPEG image frame (0xBDDB)
+UART_END_JPEG = b"\xBD\xDB"
+
+# Serial Communication Configuration
+# Default ring buffer size in bytes (128 KB)
 DEFAULT_BUFFER_SIZE = 128 * 1024
+# Default UART baud rate
 DEFAULT_BAUDRATE = 921_600
 
+# Log pattern matching configuration
+# Tuple of (start_pattern, end_pattern, log_function, prefix) for extracting
+# and forwarding device logs from GAP9 and nRF52 to Python logging system.
+# Each entry maps a serial log marker to its corresponding Python log level.
 TEXT_PATTERNS: Tuple[Tuple[bytes, bytes, Callable[..., None], str], ...] = (
     (b"[GAP9-TRC]", b"\n", logging.debug, "[GAP9-TRC]"),
     (b"[GAP9-DBG]", b"\n", logging.debug, "[GAP9-DBG]"),
@@ -61,8 +99,22 @@ TEXT_PATTERNS: Tuple[Tuple[bytes, bytes, Callable[..., None], str], ...] = (
 # ----------------------------------------
 
 # --------------- Helpers  ---------------
+
 def _ensure_influx_config() -> None:
-    """Lazy-load InfluxDB credentials from config.ini when needed."""
+    """Lazy-load InfluxDB credentials from config.ini when needed.
+    
+    This function reads the configuration file only when database connectivity
+    is required (i.e., not in dry-run mode). It populates the global configuration
+    variables (token, org, url, bucket, measurement) from the [influx] section
+    of config.ini.
+    
+    Raises:
+        RuntimeError: If config.ini does not exist in the script's directory.
+    
+    Note:
+        This function modifies global variables and should only be called once
+        before establishing the InfluxDB connection.
+    """
     global token, org, url, bucket, measurement
     if not _ini_path.exists():
         raise RuntimeError("Configuration file ./config.ini not found!")
@@ -75,32 +127,89 @@ def _ensure_influx_config() -> None:
     measurement = _cfg.get("influx", "measurement")
 
 def _graceful_shutdown(signum: int, frame) -> None:
-    """Handle shutdown signals gracefully."""
+    """Handle shutdown signals gracefully.
+    
+    Logs the received signal and performs a clean exit. Registered as handler
+    for SIGINT and SIGTERM in main().
+    
+    Args:
+        signum: Signal number received (e.g., SIGINT, SIGTERM).
+        frame: Current stack frame (unused).
+    """
     logging.info("Received signal %s, shutting down", signum)
     sys.exit(0)
 
 
 def _clamp(value: float, lower: float, upper: float) -> float:
+    """Clamp a value to a specified range.
+    
+    Used to constrain normalized bounding box coordinates to [0, 1] and pixel
+    coordinates to valid image dimensions.
+    
+    Args:
+        value: The input value to clamp.
+        lower: Lower bound of the range (inclusive).
+        upper: Upper bound of the range (inclusive).
+    
+    Returns:
+        Clamped value within [lower, upper].
+    """
     return max(lower, min(upper, value))
 # ----------------------------------------
 
 
 class RingBuffer:
-    """Simple deque-backed ring buffer for searching framed UART payloads."""
+    """Simple deque-backed ring buffer for searching framed UART payloads.
+    
+    Implements a circular buffer using collections.deque that automatically
+    discards oldest data when full. Provides pattern matching for extracting
+    framed payloads delimited by start/end markers.
+    """
 
     def __init__(self, size: int) -> None:
+        """Initialize ring buffer with specified capacity.
+        
+        Args:
+            size: Maximum buffer size in bytes (oldest data auto-discarded when full).
+        """
         self._buffer: Deque[int] = deque(maxlen=size)
 
     def append(self, data: bytes) -> None:
+        """Append data to the ring buffer.
+        
+        Args:
+            data: Byte string to append to the buffer.
+        """
         self._buffer.extend(data)
 
     def get_data(self) -> bytes:
+        """Retrieve current buffer contents as bytes.
+        
+        Returns:
+            Complete buffer contents as byte string.
+        """
         return bytes(self._buffer)
 
     def clear(self) -> None:
+        """Clear all data from the buffer."""
         self._buffer.clear()
 
     def extract_between(self, start_pattern: bytes, end_pattern: bytes) -> Tuple[Optional[bytes], bool]:
+        """Extract payload between start and end markers, removing frame from buffer.
+        
+        Searches for complete frame (start + payload + end). If found, extracts
+        payload, removes entire frame from buffer, and preserves remaining data.
+        If incomplete or not found, buffer is unchanged.
+        
+        Args:
+            start_pattern: Byte sequence marking frame start.
+            end_pattern: Byte sequence marking frame end.
+        
+        Returns:
+            Tuple of (payload_bytes, found_flag) where:
+                - payload_bytes: Extracted data between markers (None if not found)
+                - found_flag: True if complete frame found and extracted
+        """
         data = self.get_data()
         start_idx = data.find(start_pattern)
         if start_idx == -1:
@@ -116,9 +225,38 @@ class RingBuffer:
         return extracted, True
 
 
-# Each box is 19 bytes (5 * 4 bytes + 1 byte + 1 byte)
 def parse_bboxes(serial_data: bytes) -> List[Dict[str, object]]:
-    """Decode UART bbox payload into a list of pixel-space dictionaries."""
+    """Decode UART bounding box payload into list of pixel-space dictionaries.
+    
+    Each bounding box is encoded as 26 bytes:
+        - 4 floats (x1, y1, x2, y2): Normalized coordinates [0.0, 1.0]
+        - 2 floats (obj_conf, cls_conf): Confidence scores
+        - 1 byte (cls_id): Class ID
+        - 1 byte (alive): Tracking flag
+    
+    Processing steps:
+        1. Validate payload size (must be multiple of 26)
+        2. Unpack binary structure using struct.unpack("4f2fBc", ...)
+        3. Check for NaN values and skip invalid boxes
+        4. Clamp normalized coordinates to [0.0, 1.0]
+        5. Apply FLIP_X/FLIP_Y transformations if enabled
+        6. Convert to pixel coordinates using INPUT_W/INPUT_H
+        7. Validate final coordinates (x1 < x2, y1 < y2)
+    
+    Args:
+        serial_data: Raw byte payload containing one or more bounding boxes.
+    
+    Returns:
+        List of dictionaries, each containing:
+            - x1, y1, x2, y2: Pixel coordinates (int)
+            - obj_conf: Object confidence score [0.0, 1.0] (float)
+            - cls_conf: Class confidence score [0.0, 1.0] (float)
+            - cls_id: Class identifier (int)
+            - alive: Object tracking state (bool)
+    
+    Warning:
+        Invalid boxes (NaN, out-of-range, malformed) are logged and skipped.
+    """
     if not serial_data:
         return []
 
@@ -185,7 +323,28 @@ def parse_bboxes(serial_data: bytes) -> List[Dict[str, object]]:
 
 
 def drain_ring_buffer(ring_buffer: RingBuffer) -> Tuple[List[bytes], List[bytes]]:
-    """Extract textual logs, bbox payloads, and JPEG payloads from the buffer."""
+    """Extract all available frames from the ring buffer.
+    
+    Repeatedly searches buffer for all frame types until no more complete frames
+    are found. Processes in order:
+        1. Text logs (GAP9/nRF patterns) - forwarded to Python logging
+        2. Bounding box frames (UART_START_BBOX...UART_END_BBOX)
+        3. JPEG image frames (UART_START_JPEG...UART_END_JPEG)
+    
+    Logs are immediately dispatched to logging system. Binary payloads (bboxes,
+    images) are accumulated and returned for downstream processing.
+    
+    Args:
+        ring_buffer: RingBuffer instance containing incoming serial data.
+    
+    Returns:
+        Tuple of (bbox_payloads, image_payloads) where:
+            - bbox_payloads: List of raw bounding box byte arrays
+            - image_payloads: List of raw JPEG byte arrays
+    
+    Note:
+        Empty bbox payloads are preserved; empty JPEG payloads trigger warnings.
+    """
     bbox_payloads: List[bytes] = []
     image_payloads: List[bytes] = []
 
@@ -220,7 +379,35 @@ def drain_ring_buffer(ring_buffer: RingBuffer) -> Tuple[List[bytes], List[bytes]
 
 
 def save_image_payload(payload: bytes, image_dir: Path, hash_algorithm: str) -> Optional[Dict[str, object]]:
-    """Persist JPEG payload to disk and return metadata."""
+    """Persist JPEG payload to disk and return metadata.
+    
+    Processing pipeline:
+        1. Validate payload size (minimum 4 bytes for header)
+        2. Extract declared size from first 4 bytes (little-endian)
+        3. Verify declared size matches actual JPEG byte count
+        4. Compute hash digest over JPEG data
+        5. Generate filename: YYYYMMDDTHHMMSSffffffZ_HASH[:8].jpg
+        6. Create image_dir if it doesn't exist
+        7. Write JPEG bytes to disk
+    
+    Args:
+        payload: Raw byte array containing size header (4 bytes LE) + JPEG data.
+        image_dir: Directory path where images will be saved.
+        hash_algorithm: Hash algorithm name (e.g., "sha256", "sha1").
+    
+    Returns:
+        Dictionary containing image metadata on success, None on failure:
+            - path: Full Path object to saved file
+            - timestamp: UTC datetime when image was saved
+            - byte_size: Size of JPEG data in bytes
+    
+    Returns:
+        None if:
+            - Payload too small (< 4 bytes)
+            - Size mismatch between header and actual data
+            - Invalid hash algorithm
+            - File write fails (logged as error)
+    """
     if len(payload) < 4:
         logging.warning("JPEG payload too small (%d bytes)", len(payload))
         return None
@@ -268,7 +455,35 @@ def build_point(
     bbox: Dict[str, object],
     image_meta: Optional[Dict[str, object]],
 ) -> Dict[str, object]:
-    """Create an InfluxDB point containing bbox coordinates and metadata."""
+    """Create an InfluxDB point containing bbox coordinates and metadata.
+    
+    Correlates detection with corresponding image using metadata. If no image
+    metadata is available, uses placeholder values.
+    
+    Args:
+        measurement: InfluxDB measurement name.
+        bbox_index: Zero-based index of this bbox within current detection batch.
+        bbox: Bounding box dictionary (output from parse_bboxes).
+        image_meta: Image metadata dictionary (from save_image_payload) or None.
+    
+    Returns:
+        InfluxDB point dictionary with structure::
+        
+            {
+              "measurement": str,
+              "time": datetime (UTC),
+              "fields": {
+                "bbox_index": int,
+                "x1", "y1", "x2", "y2": int (pixel coords),
+                "width", "height": int (pixels),
+                "obj_conf", "cls_conf": float,
+                "cls_id": int,
+                "alive": bool,
+                "image_bytes": int,
+                "image_filename": str (if image available)
+              }
+            }
+    """
     image_hash = image_meta["hash"] if image_meta else "missing"
     fields = {
         "bbox_index": bbox_index,
@@ -294,12 +509,48 @@ def build_point(
     }
 
 def capture_groundtruth_image(fullPath: str) -> None:
-    """Capture an image from RPi v3 camera, saves it as fullPath_gt"""
+    """Capture ground truth image from Raspberry Pi Camera v3.
+    
+    Placeholder function for synchronized ground truth capture using the
+    Raspberry Pi camera module. When implemented, will capture a reference
+    image at the same time as the GAP9 frame for validation.
+    
+    Args:
+        fullPath: Base path for the captured image (will append "_gt" suffix).
+    
+    Todo:
+        Implement picamera2 integration for actual image capture.
+    
+    Note:
+        Currently unused/unimplemented.
+    """
 
 
 
 def run(args: argparse.Namespace) -> None:
-    """Continuously read UART frames, save images, and push bbox metadata to InfluxDB."""
+    """Main processing loop - read UART frames, save images, push to InfluxDB.
+    
+    Core event loop that:
+        1. Initializes InfluxDB connection (if not dry-run)
+        2. Opens serial port and creates ring buffer
+        3. Continuously reads serial data chunks
+        4. Drains ring buffer to extract frames
+        5. Saves JPEG images to disk with hash computation
+        6. Decodes bounding boxes and writes to InfluxDB
+        7. Handles errors gracefully with logging
+    
+    Args:
+        args: Parsed command-line arguments from argparse.
+    
+    Note:
+        In dry-run mode:
+            - Skips config loading and database connection
+            - Still saves images locally
+            - Prints bbox summaries to console instead of DB writes
+    
+    Warning:
+        Exits on serial port errors (open failure, read errors).
+    """
     image_dir = Path(args.image_dir)
     write_client = None
     write_api = None
@@ -401,7 +652,22 @@ def run(args: argparse.Namespace) -> None:
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
-    """Build command-line argument parser."""
+    """Build command-line argument parser.
+    
+    Defines CLI interface with arguments:
+        - serial_port (positional): Device path (e.g., /dev/ttyUSB0)
+        - --baudrate: UART speed (default: 921600)
+        - --serial-timeout: Read timeout in seconds (default: 0.01)
+        - --idle-sleep: Sleep when no data available (default: 0.01)
+        - --buffer-size: Ring buffer capacity in bytes (default: 128KB)
+        - --image-dir: Output directory for JPEG frames
+        - --hash-algorithm: Hash function for fingerprinting (default: sha256)
+        - --dry-run: Disable database writes (testing mode)
+        - --log-level: Python logging verbosity (default: INFO)
+    
+    Returns:
+        Configured ArgumentParser instance.
+    """
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("serial_port", help="Serial device to read from, e.g. /dev/ttyUSB0")
     parser.add_argument("--baudrate", type=int, default=DEFAULT_BAUDRATE, help="Serial port baud rate")
@@ -435,7 +701,21 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
 
 # --------------- Main ---------------
+
 def main() -> None:
+    """Application entry point.
+    
+    Orchestrates:
+        1. Command-line argument parsing
+        2. Logging system initialization
+        3. Signal handler registration (SIGINT, SIGTERM)
+        4. Invocation of main processing loop (run)
+        5. Graceful shutdown on keyboard interrupt
+    
+    Note:
+        This function never returns during normal operation; terminates via
+        signal handlers or exceptions.
+    """
     parser = build_arg_parser()
     args = parser.parse_args()
     logging.basicConfig(
