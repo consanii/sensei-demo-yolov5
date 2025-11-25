@@ -44,3 +44,6 @@ serial_to_db/**/*.png
 serial_to_db/**/*.jpg
 
 serial_log.log
+
+# Config file
+config.ini
