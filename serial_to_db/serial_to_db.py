@@ -33,7 +33,8 @@ import serial
 import influxdb_client
 from influxdb_client.client.write_api import SYNCHRONOUS
 
-import picamera
+import os # To suppress verbose libcamera logs
+from picamera2 import Picamera2
 
 
 # --------------- Constants  -------------
@@ -103,8 +104,7 @@ TEXT_PATTERNS: Tuple[Tuple[bytes, bytes, Callable[..., None], str], ...] = (
 def _ensure_influx_config() -> None:
     """Lazy-load InfluxDB credentials from config.ini when needed.
     
-    This function reads the configuration file only when database connectivity
-    is required (i.e., not in dry-run mode). It populates the global configuration
+    It populates the global configuration
     variables (token, org, url, bucket, measurement) from the [influx] section
     of config.ini.
     
@@ -120,11 +120,11 @@ def _ensure_influx_config() -> None:
         raise RuntimeError("Configuration file ./config.ini not found!")
     _cfg = configparser.ConfigParser()
     _cfg.read(_ini_path)
-    token = _cfg.get("influx", "token")
-    org = _cfg.get("influx", "org")
-    url = _cfg.get("influx", "url")
-    bucket = _cfg.get("influx", "bucket")
-    measurement = _cfg.get("influx", "measurement")
+    token = _cfg.get("influx", "token", fallback=None)
+    org = _cfg.get("influx", "org", fallback=None)
+    url = _cfg.get("influx", "url", fallback=None)
+    bucket = _cfg.get("influx", "bucket", fallback=None)
+    measurement = _cfg.get("influx", "measurement", fallback=None)
 
 def _graceful_shutdown(signum: int, frame) -> None:
     """Handle shutdown signals gracefully.
@@ -446,6 +446,7 @@ def save_image_payload(payload: bytes, image_dir: Path, hash_algorithm: str) -> 
         "path": path,
         "timestamp": timestamp,
         "byte_size": len(jpeg_bytes),
+        "hash": image_hash,
     }
 
 
@@ -457,9 +458,6 @@ def build_point(
 ) -> Dict[str, object]:
     """Create an InfluxDB point containing bbox coordinates and metadata.
     
-    Correlates detection with corresponding image using metadata. If no image
-    metadata is available, uses placeholder values.
-    
     Args:
         measurement: InfluxDB measurement name.
         bbox_index: Zero-based index of this bbox within current detection batch.
@@ -467,24 +465,8 @@ def build_point(
         image_meta: Image metadata dictionary (from save_image_payload) or None.
     
     Returns:
-        InfluxDB point dictionary with structure::
-        
-            {
-              "measurement": str,
-              "time": datetime (UTC),
-              "fields": {
-                "bbox_index": int,
-                "x1", "y1", "x2", "y2": int (pixel coords),
-                "width", "height": int (pixels),
-                "obj_conf", "cls_conf": float,
-                "cls_id": int,
-                "alive": bool,
-                "image_bytes": int,
-                "image_filename": str (if image available)
-              }
-            }
+        InfluxDB point dictionary
     """
-    image_hash = image_meta["hash"] if image_meta else "missing"
     fields = {
         "bbox_index": bbox_index,
         "x1": int(bbox["x1"]),
@@ -501,6 +483,7 @@ def build_point(
     }
     if image_meta:
         fields["image_filename"] = image_meta["path"].name
+        fields["image_hash"] = image_meta["hash"]
 
     return {
         "measurement": measurement,
@@ -508,22 +491,52 @@ def build_point(
         "fields": fields,
     }
 
-def capture_groundtruth_image(fullPath: str) -> None:
+def initialize_camera() -> Optional[Picamera2]:
+    """Initialize Raspberry Pi Camera v3 for ground truth capture.
+    
+    Returns:
+        Picamera2 instance if successful, None if camera unavailable.
+    """
+    try:
+        picam2 = Picamera2()
+        config = picam2.create_still_configuration(main={"size": (INPUT_W, INPUT_H)})
+        picam2.configure(config)
+        picam2.start()
+        
+        logging.info("Raspberry Pi camera initialized for ground truth capture")
+        return picam2
+        
+    except Exception as exc:
+        logging.error("Failed to initialize camera: %s", exc)
+        return None
+
+
+def capture_groundtruth_image(picam2: Optional[Picamera2], full_path: Path) -> None:
     """Capture ground truth image from Raspberry Pi Camera v3.
     
-    Placeholder function for synchronized ground truth capture using the
-    Raspberry Pi camera module. When implemented, will capture a reference
-    image at the same time as the GAP9 frame for validation.
-    
     Args:
-        fullPath: Base path for the captured image (will append "_gt" suffix).
-    
-    Todo:
-        Implement picamera2 integration for actual image capture.
-    
-    Note:
-        Currently unused/unimplemented.
+        picam2: Initialized Picamera2 instance (or None to skip capture).
+        full_path: Path object of the GAP9 captured image. Ground truth image
+                  will be saved with "_gt" suffix before the extension.
     """
+    if picam2 is None:
+        return
+    
+    try:
+        # Generate ground truth filename
+        stem = full_path.stem
+        suffix = full_path.suffix
+        gt_filename = f"{stem}_gt{suffix}"
+        gt_path = full_path.parent / gt_filename
+        
+        # Capture and save ground truth image
+        picam2.capture_file(str(gt_path))
+        
+        logging.info("Captured ground truth image: %s", gt_path)
+        
+    except Exception as exc:
+        logging.error("Failed to capture ground truth image: %s", exc)
+    
 
 
 
@@ -554,6 +567,7 @@ def run(args: argparse.Namespace) -> None:
     image_dir = Path(args.image_dir)
     write_client = None
     write_api = None
+    picam2 = initialize_camera()
 
     if args.dry_run:
         logging.warning("Running in dry-run mode: InfluxDB writes are disabled")
@@ -568,9 +582,12 @@ def run(args: argparse.Namespace) -> None:
             logging.error("InfluxDB config incomplete: %s", ", ".join(k for k, v in missing.items() if v is None))
             return
         try:
-            logging.info("Connecting to InfluxDB at %s", url)
             write_client = influxdb_client.InfluxDBClient(url=url, token=token, org=org)
             write_api = write_client.write_api(write_options=SYNCHRONOUS)
+            
+            # Verify authentication by listing buckets (requires valid token)
+            buckets_api = write_client.buckets_api()
+            buckets_api.find_bucket_by_name(bucket)
             logging.info("Connected to InfluxDB bucket '%s' (org: '%s')", bucket, org)
         except Exception as exc:
             logging.error("Failed to connect to InfluxDB: %s", exc)
@@ -612,7 +629,7 @@ def run(args: argparse.Namespace) -> None:
                     meta = save_image_payload(payload, image_dir, args.hash_algorithm)
                     if meta:
                         latest_image_meta = meta
-                        capture_groundtruth_image(meta["path"])
+                        capture_groundtruth_image(picam2, meta["path"])
 
                 for payload in bbox_payloads:
                     boxes = parse_bboxes(payload)
@@ -644,6 +661,14 @@ def run(args: argparse.Namespace) -> None:
                             except Exception as exc:
                                 logging.error("Failed to write bbox to InfluxDB: %s", exc)
     finally:
+        if picam2 is not None:
+            try:
+                picam2.stop()
+                picam2.close()
+                logging.info("Camera closed")
+            except Exception as exc:
+                logging.error("Failed to close camera: %s", exc)
+        
         if write_client is not None:
             try:
                 write_client.close()
@@ -723,6 +748,17 @@ def main() -> None:
         format="%(asctime)s %(levelname)s %(message)s",
         stream=sys.stderr,
     )
+    
+    # libcamera levels: 0=DEBUG, 1=INFO, 2=WARN, 3=ERROR, 4=FATAL
+    libcamera_level_map = {
+        "DEBUG": "0",
+        "INFO": "1",
+        "WARNING": "2",
+        "ERROR": "3",
+        "CRITICAL": "4",
+    }
+    libcamera_level = libcamera_level_map.get(args.log_level, "3")
+    os.environ["LIBCAMERA_LOG_LEVELS"] = f"*:{2}"
 
     signal.signal(signal.SIGINT, _graceful_shutdown)
     signal.signal(signal.SIGTERM, _graceful_shutdown)
